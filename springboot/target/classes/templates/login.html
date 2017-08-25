@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> 会员登录 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+	<meta http-equiv="pragma" content="no-cache">  
+	<meta http-equiv="cache-control" content="no-cache">  
+	<meta http-equiv="expires" content="0">
+	
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="/css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	
+	</head>
+	<body onload="condition()">
+	<div id="fh5co-page" >
+
+		<div id="fh5co-main" style="width: 100%">
+			<aside id="fh5co-hero" class="js-fullheight">
+				<div class="flexslider js-fullheight">
+					<ul class="slides">
+				   	<li style="background-image: url(/images/img_bg_4.jpg);">
+				   		<div class="container-fluid">
+				   			<div class="row">
+					   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+					   				<div class="slider-text-inner" style="height: 50%">
+					   					<h1><strong> MoMo Album Management System </strong></h1>
+					   					<div style="background:#FFFFFF;filter:alpha(opacity=85);  /*支持 IE 浏览器*/-moz-opacity:0.85; /*支持 FireFox 浏览器*/opacity:0.85;  /*支持 Chrome, Opera, Safari 等浏览器*/
+width: 50%;height:230px;text-align: center;border-radius:10px 10px 10px 10px;vertical-align:middle;" class="container">
+<h1 class="form-signin-heading" style="color:gray;font-size: 30px;"> sign in/<a href="/user/toRegister" style="color:  	#46A3FF;">register </a></h1>
+<div style="width:90%; float: left;position: absolute;top:43.4%;left:5%;color: red;font-weight: bold" id="warnDiv" th:text="${msg}"></div>
+									<div style="width: 80%;height: 60%;"class="container">
+					   					<form class="form-signin" method="post"id="loginForm">
+											 <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+											      <input th:value="${username}" type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" onblur="checkForm(this.id)" >
+											    </div>
+											  </div>
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+											      <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" readonly="readonly" onfocus="$('#password').attr('readonly',false)" onblur="checkForm(this.id)" >
+											    </div>
+											  </div>
+											  <button type="button" class="btn btn-warning btn-block" data-loading-text="正在登录..." onclick="submitForm()" id="btn">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+										</form>
+										
+									</div>
+										</div>
+					   				</div>
+					   			</div>
+					   		</div>
+				   		</div>
+				   	</li>
+				  	</ul>
+			  	</div>
+			</aside>
+	</div>
+	<div style="display:none" th:if="${session.user}" id="test" th:text="123"></div>
+</div>
+	
+	<!-- jQuery -->
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="/js/jquery.flexslider-min.js"></script>
+	<!-- MAIN JS -->
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery.form.js"></script>
+	<script src="/js/login.js"></script>
+	<script type="text/javascript">
+		function condition(){
+			var text = $("#test").text();
+			if(text !='' && text.length>0 ){
+				window.location.href="/user/index";
+			}
+		}
+	</script>
+
+	</body>
+</html>
+
