@@ -70,6 +70,14 @@ function checkParams(value,flag){
 	function checkForm(){
 		var $btn = $("#btn").button('loading');
 		if(!flag1){
+			$(":input").each(function(a,b){
+			       var id = $(b).attr("id");//获取id属性
+			       var value = $(b).val();
+			       var s = checkParams(value,id);
+			       if(s == false) {
+			    	   index++;
+			       }
+			    });
 			$btn.button('reset');
 			return;
 		}
