@@ -33,11 +33,25 @@ public class User implements Serializable{
 	private Date createTime;
 	@Column(nullable = true, unique = false)
 	private Date lastLoginTime;
+	@Column(nullable = true, unique = false)
+	private String headUrl;
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
+	}
+	/**
+	 * @return the headUrl
+	 */
+	public String getHeadUrl() {
+		return headUrl;
+	}
+	/**
+	 * @param headUrl the headUrl to set
+	 */
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
 	}
 	/**
 	 * @param id the id to set

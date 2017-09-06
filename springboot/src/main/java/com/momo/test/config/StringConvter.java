@@ -11,7 +11,7 @@ public class StringConvter implements  Converter<String, String>{
 		if(source ==null || source.trim().equals("")){
 			return null;
 		}
-		return source;
+		return source.trim();
 	}
 
 }

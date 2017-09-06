@@ -30,4 +30,12 @@ public class CommonController {
 	public String portfolio(){
 		return "portfolio";
 	}
+	@RequestMapping(value={"/portals","/"})
+	public String portals(){
+		return "portals";
+	}
+	@RequestMapping(value={"/company"})
+	public String company(){
+		return "company";
+	}
 }

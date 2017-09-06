@@ -45,9 +45,8 @@
 	<![endif]-->
 	
 	</head>
-	<body onload="condition()">
+	<body>
 	<div id="fh5co-page" >
-
 		<div id="fh5co-main" style="width: 100%">
 			<aside id="fh5co-hero" class="js-fullheight">
 				<div class="flexslider js-fullheight">
@@ -60,9 +59,9 @@
 					   					<h1><strong> MoMo Album Management System </strong></h1>
 					   					<div style="background:#FFFFFF;filter:alpha(opacity=85);  /*支持 IE 浏览器*/-moz-opacity:0.85; /*支持 FireFox 浏览器*/opacity:0.85;  /*支持 Chrome, Opera, Safari 等浏览器*/
 width: 380px;height:230px;text-align: center;border-radius:10px 10px 10px 10px;vertical-align:middle;" class="container">
-<h1 class="form-signin-heading" style="color:gray;font-size: 30px;"> sign in/<a href="/user/toRegister" style="color:  	#46A3FF;">register </a></h1>
-<div style="width:90%; float: left;position: absolute;top:43.4%;left:5%;color: red;font-weight: bold" id="warnDiv" th:text="${msg}"></div>
-									<div style="width: 80%;height: 60%;"class="container">
+<font class="form-signin-heading" style="color:gray;font-size: 30px;"> sign in/<a href="/user/toRegister" style="color:  	#46A3FF;">register </a></font>
+									<div style="width: 80%;height: 60%;line-height: 16px"class="container">
+									<font color='red' id="warnDiv" th:text="${msg}" style="font-weight: bold;"></font><br>
 					   					<form class="form-signin" method="post"id="loginForm">
 											 <div class="form-group">
 											    <div class="input-group">

@@ -76,6 +76,8 @@ public class UserServiceImpl implements UserService {
 		user.setCreateTime(new Date());
 		user.setId(Long.valueOf(SerialNumberUtils.getSerialNumber(System.currentTimeMillis())));
 		user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
+		// 设置默认头像
+		user.setHeadUrl("/images/defaultHeadImage2.jpg");
 		userDao.save(user);
 	}
 	

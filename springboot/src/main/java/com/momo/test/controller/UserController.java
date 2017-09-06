@@ -38,7 +38,7 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = { "/toLogin", "/" })
+	@RequestMapping(value = { "/toLogin"})
 	public String toLogin(HttpSession session) {
 		/*
 		 * Object user = session.getAttribute("user"); if(user != null){ return
