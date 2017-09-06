@@ -56,7 +56,37 @@
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+<style type="text/css">
+  .myBtn {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  padding: 8px 20px !important;
+}
+.MyBtn2 {
+  padding: 4px 15px !important;
+}
+.MyBtn3 {
+  background: #5cb85c;
+  color: #fff;
+  border: 2px solid #5cb85c;
+}
+/* .myBtn4 {
+  color: #fff;
+  background: #228896;
+} */
+</style>
 </head>
 <body style="overflow-y:hidden">
 	<div id="fh5co-page">
@@ -298,10 +328,10 @@
 				<div class="modal-body">您，确定要退出登录吗？</div>
 				<div class="modal-footer">
 					<a href="/user/logout" style="color: white;"><button
-							type="button" class="btn btn-success btn-sm"
+							type="button" class="btn btn-success btn-sm myBtn MyBtn2 MyBtn3 myBtn4"
 							style="font-size: 11px">退出登录</button></a>
-					<button type="button" class="btn btn-default btn-sm"
-						data-dismiss="modal" style="font-size: 12px">取消</button>
+					<button type="button" class="btn btn-default btn-sm myBtn MyBtn2"
+						data-dismiss="modal" style="font-size: 13px">取消</button>
 				</div>
 			</div>
 		</div>

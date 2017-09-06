@@ -11,27 +11,25 @@
   https://github.com/kennethcachia/Shape-Shifter 
 
 */
-
+var i = -1;
 
 var S = {
   init: function () {
-    var action = window.location.href,
-        i = action.indexOf('?a=');
+    var action = window.location.href
+        /*i = action.indexOf('?a=')*/;
     S.Drawing.init('.canvas');
     document.body.classList.add('body--ready');
-    if (i !== -1) {
-      S.UI.simulate(decodeURI(action).substring(i + 3));
+    if (i != -1) {
+      S.UI.simulate("Hello :)");
     } else {
       /*S.UI.simulate('Welcome|to|Type|Album|#rectangle|#countdown 3||');*/
-      S.UI.simulate('Welcome|To|Album|Management|System|');
+      S.UI.simulate('Welcome|To|Album|Management|System|Hello :)');
     }
-
     S.Drawing.loop(function () {
       S.Shape.render();
     });
   }
 };
-
 
 S.Drawing = (function () {
   var canvas,
@@ -232,9 +230,10 @@ S.UI = (function () {
       input.focus();
 
       if (e.keyCode === 13) {
-        firstAction = false;
+        /*firstAction = false;
         reset();
-        performAction(input.value);
+        performAction(input.value);*/
+    	  S.init();
       }
     });
 

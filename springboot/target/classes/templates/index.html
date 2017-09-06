@@ -40,21 +40,35 @@
 
 	<!-- Modernizr JS -->
 	<script src="/js/modernizr-2.6.2.min.js"></script>
+<link rel="stylesheet" href="/css/menu/toastr.css">
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	</head>
 	<body>
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-
-			<div style="width:80px;height:80px;border-radius:80px;overflow:hidden;margin: 0 auto;">
-					<img th:attr="src=${session.user.headUrl}" width="100%" height="100%"
-					style="text-align: center;" />
+			
+			<div class="dropdown">
+			<div style="width:80px;height:80px;border-radius:80px;overflow:hidden;margin: 0 auto;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+					<img th:attr="src=${session.user.headUrl}" width="100%" height="100%" style="text-align:center;"/>
 		    </div>
+				<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+				        <li role="presentation">
+				            <a role="menuitem" tabindex="-1" href="#">上传头像</a>
+				        </li>
+				         <li role="presentation" class="divider"></li>
+				        <li role="presentation">
+				            <a role="menuitem" tabindex="-1" href="#">修改个人资料</a>
+				        </li>
+				         <li role="presentation" class="divider"></li>
+				        <li role="presentation">
+				            <a role="menuitem" tabindex="-1" href="#">注销</a>
+				        </li>
+				 </ul>
+			</div>
 		    <br>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -259,13 +273,14 @@
 			</div>
 			<div class="modal-footer">
 				<a href="/user/logout" style="color:white;"><button type="button" class="btn btn-success btn-sm" style="font-size: 11px">退出登录</button></a>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="font-size: 12px">
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="font-size: 13px">
 					取消
 				</button>
 			</div>
 		</div>
 	</div>
 </div>
+
 	<!-- jQuery -->
 	<script src="/js/jquery-1.9.1.min.js"></script>
 	<!-- jQuery Easing -->
@@ -276,10 +291,7 @@
 	<script src="/js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="/js/jquery.flexslider-min.js"></script>
-	<script type="text/javascript">
-		
-	</script>
-	
+	<script src="/js/menu/toastr.js"></script>
 	<!-- MAIN JS -->
 	<script src="/js/main.js"></script>
 

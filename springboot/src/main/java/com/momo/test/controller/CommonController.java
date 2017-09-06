@@ -38,4 +38,8 @@ public class CommonController {
 	public String company(){
 		return "company";
 	}
+	@RequestMapping(value={"/menu"})
+	public String menu(){
+		return "menu";
+	}
 }
