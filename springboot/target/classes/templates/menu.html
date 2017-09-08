@@ -21,9 +21,9 @@
 		<a href="javascript:void(0)" class="upload-img">
 			<label for="upload-file">选择图片</label>
 	  </a>
-	  <input type="file" class="" name="upload-file" id="upload-file" />
+	  <input type="file" class="" name="file" id="file" />
 	</div>
-	<input type="submit" id="btnCrop"  class="Btnsty_peyton" value="上传">
+	<input type="button" id="btnCrop"  class="Btnsty_peyton" value="上传">
 	<input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
 	<input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
 	</form>
@@ -42,7 +42,7 @@ $(window).load(function() {
 		imgSrc: ''
 	}
 	var cropper = $('.imageBox').cropbox(options);
-	$('#upload-file').on('change', function(){
+	$('#file').on('change', function(){
 		var reader = new FileReader();
 		reader.onload = function(e) {
 			options.imgSrc = e.target.result;
@@ -50,13 +50,17 @@ $(window).load(function() {
 		}
 		reader.readAsDataURL(this.files[0]);
 		this.files = [];
+		var img = cropper.getDataURL();
+		$('.cropped').html('');
+		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:80px;margin-top:4px;border-radius:80px;box-shadow:0px 0px 12px #7E7E7E;"><p>80px*80px</p>');
 	})
 	$('#load').on('mouseup', function(){
 		var img = cropper.getDataURL();
 		$('.cropped').html('');
-		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
-		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
-		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+// 		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+// 		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:80px;margin-top:4px;border-radius:80px;box-shadow:0px 0px 12px #7E7E7E;"><p>80px*80px</p>');
+// 		$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
 	})
 	$('#btnZoomIn').on('click', function(){
 		cropper.zoomIn();

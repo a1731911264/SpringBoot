@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("用户名或密码不正确");
 		}
 		String md5Str = MD5Utils.getMD5Str(user.getPassword());
-		System.out.println(md5Str);
 		if(!md5Str.equals(existUser.getPassword())){
 			throw new RuntimeException("用户名或密码不正确");
 		}
@@ -74,7 +73,7 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("t_phone 手机号不能为空");
 		}
 		user.setCreateTime(new Date());
-		user.setId(Long.valueOf(SerialNumberUtils.getSerialNumber(System.currentTimeMillis())));
+		user.setId(SerialNumberUtils.getSerialNumber(System.currentTimeMillis()));
 		user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
 		// 设置默认头像
 		user.setHeadUrl("/images/defaultHeadImage2.jpg");
