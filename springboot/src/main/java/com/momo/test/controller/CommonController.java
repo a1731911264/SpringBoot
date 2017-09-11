@@ -52,23 +52,14 @@ public class CommonController {
 		return "portfolio";
 	}
 
-	@RequestMapping(value = { "/portals", "/" })
-	public String portals() {
-		return "portals";
-	}
 
 	@RequestMapping(value = { "/company" })
 	public String company() {
 		return "company";
 	}
 
-	@RequestMapping(value = { "/menu" })
-	public String menu() {
-		return "menu";
-	}
-
 	@RequestMapping("/uploadImg")
-	public void uploadImg(@RequestParam("file") CommonsMultipartFile[] files, HttpServletResponse response,
+	public void uploadImg(@RequestParam("file") MultipartFile[] files, HttpServletResponse response,
 			HttpSession session) throws Exception {
 		try {
 			if (files != null && files.length > 0) {
@@ -82,16 +73,17 @@ public class CommonController {
 				if (!Files.exists(Paths.get("images/"+user.getId()))) {
 					Files.createDirectories(Paths.get("images/"+user.getId()));
 				}
-				for (CommonsMultipartFile file : files) {
+				for (MultipartFile file : files) {
 					String fileName = UUIDUtils.getUUID32();
 					System.out.println(fileName);
 					Files.copy(file.getInputStream(), Paths.get("images/"+user.getId()+"/"+fileName), StandardCopyOption.REPLACE_EXISTING);
 				}
-				ResponseUtils.sendMessage(response, false, "请选择文件");
-				return;
-			} else {
 				ResponseUtils.sendMessage(response, true, "图片上传成功");
 				return;
+			} else {
+				ResponseUtils.sendMessage(response, false, "请选择一张图片");
+				return;
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -38,7 +38,7 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/other.css">
-
+<link rel="stylesheet" href="/css/head/style.css" type="text/css" />
 	<!-- Modernizr JS -->
 	<script src="/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -52,10 +52,27 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<div style="width:80px;height:80px;border-radius:80px;overflow:hidden;margin: 0 auto;">
-					<img th:attr="src=${session.user.headUrl}" width="100%" height="100%"
-					style="text-align: center;" />
-		    </div>
+			<div class="dropdown">
+				<div
+					style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;"
+					class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+					<img th:attr="src=${session.user.headUrl}" width="100%"
+						height="100%" style="text-align: center;" id="imageHead" />
+				</div>
+				<ul class="dropdown-menu pull-right" role="menu"
+					aria-labelledby="dropdownMenu1">
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="javascript:void(0)" data-toggle="modal"
+						data-target="#editHead"> 上传头像</a></li>
+					<li role="presentation" class="divider"></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#">修改个人资料</a></li>
+					<li role="presentation" class="divider"></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="javascript:void(0)" data-toggle="modal"
+						data-target="#myModal">注销</a></li>
+				</ul>
+			</div>
 		    <br>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -63,7 +80,7 @@
 					<li><a href="/common/portfolio" style="font-family:楷体;font-size: 18px">相册</a></li>
 					<li class="fh5co-active"><a href="/common/blog" style="font-family:楷体;font-size: 18px">联系人</a></li>
 					<li><a href="/common/about" style="font-family:楷体;font-size: 18px">朋友圈</a></li>
-					<li><a href="javascript:void(0)" style="font-family:楷体;font-size: 18px"  data-toggle="modal" data-target="#myModal">退出登录</a></li>
+<!-- 					<li><a href="javascript:void(0)" style="font-family:楷体;font-size: 18px"  data-toggle="modal" data-target="#myModal">退出登录</a></li> -->
 				</ul>
 			</nav>
 
@@ -238,29 +255,63 @@
 			</div>
 		</div>
 	</div>
-<div class="modal fade container" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="position: absolute;top: 30%">
-	<div class="modal-dialog" style="width: 300px;height: 30px">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h5 class="modal-title" id="myModalLabel">
-					温馨提示：
-				</h5>
-			</div>
-			<div class="modal-body">
-				您，确定要退出登录吗？
-			</div>
-			<div class="modal-footer">
-				<a href="/user/logout" style="color:white;"><button type="button" class="btn btn-success btn-sm" style="font-size: 11px">退出登录</button></a>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="font-size: 13px">
-					取消
-				</button>
+<div class="modal fade container" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+		style="position: fixed; top: 30%">
+		<div class="modal-dialog" style="width: 300px; height: 30px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h5 class="modal-title" id="myModalLabel">温馨提示：</h5>
+				</div>
+				<div class="modal-body">您，确定要退出登录吗？</div>
+				<div class="modal-footer">
+					<a href="/user/logout" style="color: white;"><button
+							type="button" class="btn btn-success btn-sm"
+							style="font-size: 11px">退出登录</button></a>
+					<button type="button" class="btn btn-default btn-sm"
+						data-dismiss="modal" style="font-size: 13px">取消</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<div class="modal fade container" id="editHead" tabindex="-1"
+		role="dialog" aria-labelledby="toEditHead" aria-hidden="true"
+		style="position: fixed; top: 0%;overflow-y: hidden;width: 446px;height:550px;border-radius:6px 6px 2px 6px;">
+		<div class="modal-dialog" style="margin:0 0 0 0">
+			<div class="modal-content">
+				<div class="modal-header" style="width: 430px">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h5 class="modal-title" id="toEditHead">修改头像：</h5>
+				</div>
+				<div class="modal-body" style="height:500px;width:446px;margin:0 0 0 0">
+					<div class="imageBox">
+						<div class="thumbBox" id="load"></div>
+						<div class="spinner" style="display: none">请选择一张图片</div>
+					</div>
+					<div class="action">
+						<form action="#" enctype="multipart/form-data" method="post"
+							id="uploadHead">
+							<div class="new-contentarea tc">
+								<a href="javascript:void(0)" class="upload-img"> <label
+									for="file">选择图片</label>
+								</a> <input type="hidden" name="headUrl" id="headUrl"> <input
+									type="file" class="" name="files" id="file" multiple="multiple" />
+							</div>
+							<input type="button" id="btnCrop" class="Btnsty_peyton"
+								value="上传" onclick="upload()"> <input type="button"
+								id="btnZoomIn" class="Btnsty_peyton" value="+"> <input
+								type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+						</form>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- jQuery -->
 	<script src="/js/jquery-1.9.1.min.js"></script>
 	<!-- jQuery Easing -->
@@ -275,7 +326,9 @@
 	
 	<!-- MAIN JS -->
 	<script src="/js/main.js"></script>
-
+<script src="/js/jquery.form.js"></script>
+	<script type="text/javascript" src="/js/head/cropbox.js"></script>
+	<script type="text/javascript" src="/js/head/head.js"></script>
 	</body>
 </html>
 

@@ -11,7 +11,7 @@ public class IntercepetorConfig extends WebMvcConfigurerAdapter{
 	public void addInterceptors(InterceptorRegistry registry) { 
 		InterceptorRegistration addInterceptor = registry.addInterceptor(new LoginInterceptor());
 		addInterceptor.addPathPatterns("/**");
-		addInterceptor.excludePathPatterns("/common/portals","/","/user/toLogin","/user/toRegister","/static/*","/user/register","/code/registerCode","/user/login","/user/checkUsername","/user/checkValidateCode");
+		addInterceptor.excludePathPatterns("/portals","/","/user/toLogin","/user/toRegister","/static/*","/user/register","/code/registerCode","/user/login","/user/checkUsername","/user/checkValidateCode");
 	}
 
 }

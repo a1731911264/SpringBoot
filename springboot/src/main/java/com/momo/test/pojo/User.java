@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 public class User implements Serializable{
@@ -18,7 +20,8 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 99999L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="system_uuid")
+    @GenericGenerator(name="system_uuid",strategy="uuid")
 	private String id;
 	@Column(nullable = false, unique = true)
 	private String username;

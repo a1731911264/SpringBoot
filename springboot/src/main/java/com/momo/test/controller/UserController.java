@@ -115,7 +115,9 @@ public class UserController {
 			log.info("用户：" + user.getUsername() + "完成注册");
 		} catch (RuntimeException e) {
 			ResponseUtils.sendMessage(response, false, e.getMessage());
+			e.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");
 		}
 	}
@@ -139,10 +141,34 @@ public class UserController {
 	public String logout(HttpSession session){
 		User user = (User) session.getAttribute("user");
 		if(user ==null){
-			return "redirect:toLogin";
+			return "redirect:portals";
 		}
 		log.info("用户："+user.getUsername()+"退出系统！");
 		session.removeAttribute("user");
-		return "redirect:toLogin";
+		return "redirect:portals";
+	}
+	// 头像上传
+	@RequestMapping(value="uploadHead")
+	public void uploadHead(String headUrl,HttpSession session,HttpServletResponse response){
+		try {
+			if(StringUtils.isBlank(headUrl)){
+				ResponseUtils.sendMessage(response, false, "请选择一张图片");
+				return;
+			}
+			System.out.println(headUrl.length());
+			User user = (User) session.getAttribute("user");
+			if(user !=null && StringUtils.isNotBlank(user.getId())){
+				// 更新session数据
+				user.setHeadUrl(headUrl);
+				userService.updateHeadUrl(user);
+				ResponseUtils.sendMessage(response, true, headUrl);
+				return;
+			}
+			ResponseUtils.sendMessage(response, false, "您还没有登录或登录过期，请重新登录！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍候再试");
+		}
+		
 	}
 }

@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+@Entity
 public class Image implements Serializable{
 	
 	/**
@@ -15,17 +18,89 @@ public class Image implements Serializable{
 	 */
 	
 	private static final long serialVersionUID = 1L;
+	/**
+	 * 主键
+	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator="system_uuid")
+    @GenericGenerator(name="system_uuid",strategy="uuid")
 	private String imageId;
-	@Column(nullable = false, unique = true)
+	/**
+	 * 照片原始文件名字
+	 */
+	@Column(nullable = false, unique = false)
 	private String originalName;
-	@Column(nullable = false, unique = true)
+	/**
+	 * 上传日期
+	 */
+	@Column(nullable = false, unique = false)
 	private Date createTime;
-	@Column(nullable = true, unique = true)
+	/**
+	 * 照片描述
+	 */
+	@Column(nullable = false, unique = false)
 	private String imageDesc;
-	@Column(nullable = false, unique = true)
+	/**
+	 * 相册id
+	 */
+	@Column(nullable = true, unique = true)
 	private String albumId;
+	/**
+	 *  状态(0 启用 1删除)
+	 */
+	@Column(nullable = true, unique = false)
+	private int status;
+	/**
+	 * 照片地址
+	 */
+	@Column(nullable = true, unique = false)
+	private String imageUrl;
+	/**
+	 * 图片大小
+	 */
+	@Column(nullable = true, unique = false)
+	private String imageSize;
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	/**
+	 * @param imageUrl the imageUrl to set
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	/**
+	 * @return the imageSize
+	 */
+	public String getImageSize() {
+		return imageSize;
+	}
+
+	/**
+	 * @param imageSize the imageSize to set
+	 */
+	public void setImageSize(String imageSize) {
+		this.imageSize = imageSize;
+	}
 
 	/**
 	 * @return the imageId

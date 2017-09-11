@@ -13,6 +13,7 @@ import com.momo.test.pojo.User;
 import com.momo.test.service.UserService;
 import com.momo.test.utils.MD5Utils;
 import com.momo.test.utils.SerialNumberUtils;
+import com.momo.test.utils.UUIDUtils;
 
 @Service
 @Transactional(readOnly=true)
@@ -73,11 +74,17 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("t_phone 手机号不能为空");
 		}
 		user.setCreateTime(new Date());
-		user.setId(SerialNumberUtils.getSerialNumber(System.currentTimeMillis()));
+		user.setId(UUIDUtils.getUUID32());
 		user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
 		// 设置默认头像
 		user.setHeadUrl("/images/defaultHeadImage2.jpg");
 		userDao.save(user);
+	}
+
+	@Override
+	@Transactional(readOnly=false)
+	public void updateHeadUrl(User user) throws Exception {
+		userDao.saveAndFlush(user);
 	}
 	
 	
