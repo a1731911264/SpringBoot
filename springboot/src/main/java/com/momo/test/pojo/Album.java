@@ -2,6 +2,7 @@ package com.momo.test.pojo;
 // 相册实体类
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,7 +42,7 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
-	private Date createDate;
+	private LocalDateTime createDate;
 	/**
 	 * 描述
 	 */
@@ -50,13 +51,8 @@ public class Album implements Serializable {
 	/**
 	 *  用户id
 	 */
-	
+	@Column(nullable = true, unique = false)
 	private String userId;
-	/**
-	 * 排序
-	 */
-	@Column(nullable = true, unique = true)
-	private Integer sort;
 	/**
 	 * 相册状态（0 启用 1删除）
 	 */
@@ -65,12 +61,27 @@ public class Album implements Serializable {
 	/**
 	 * 相册权限（0 公开 1 好友 2仅自己 ）
 	 */
+	@Column(nullable = true, unique = false)
 	private int authority;
+	@Column(nullable = false, unique = false)
+	private int imageSize;
 	/**
 	 * @return the albumId
 	 */
 	public String getAlbumId() {
 		return albumId;
+	}
+	/**
+	 * @return the imageSize
+	 */
+	public int getImageSize() {
+		return imageSize;
+	}
+	/**
+	 * @param imageSize the imageSize to set
+	 */
+	public void setImageSize(int imageSize) {
+		this.imageSize = imageSize;
 	}
 	/**
 	 * @param albumId the albumId to set
@@ -105,13 +116,13 @@ public class Album implements Serializable {
 	/**
 	 * @return the createDate
 	 */
-	public Date getCreateDate() {
+	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
 	/**
 	 * @param createDate the createDate to set
 	 */
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 	/**
@@ -137,18 +148,6 @@ public class Album implements Serializable {
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	/**
-	 * @return the sort
-	 */
-	public Integer getSort() {
-		return sort;
-	}
-	/**
-	 * @param sort the sort to set
-	 */
-	public void setSort(Integer sort) {
-		this.sort = sort;
 	}
 	/**
 	 * @return the status

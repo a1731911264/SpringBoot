@@ -1,6 +1,5 @@
 package com.momo.test.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,9 +10,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.momo.test.exception.ErrorException;
 import com.momo.test.pojo.User;
 import com.momo.test.service.UserService;
 import com.momo.test.utils.ResponseUtils;
@@ -27,39 +26,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/findUserByUserName/{username}")
-	public void findUserByUserName(@PathVariable String username, HttpServletResponse response) {
-		try {
-			User user = userService.findUserByUserName(username);
-			ResponseUtils.sendMessage(response, true, user);
-		} catch (Exception e) {
-			ResponseUtils.sendMessage(response, false, e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
 	@RequestMapping(value = { "/toLogin"})
-	public String toLogin(HttpSession session) {
-		/*
-		 * Object user = session.getAttribute("user"); if(user != null){ return
-		 * "redirect:index"; }
-		 */
+	public String toLogin() {
 		return "login";
 	}
 
 	@RequestMapping("/index")
 	public String index() {
-		return "index";
-	}
-
-	@RequestMapping("/findAll")
-	public String findAll(Model model) {
-		try {
-			List<User> findAll = userService.findAll();
-			model.addAttribute("users", findAll);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return "index";
 	}
 
@@ -71,10 +44,11 @@ public class UserController {
 			session.setAttribute("user", login);
 			ResponseUtils.sendMessage(response, true, null);
 			log.info("用户：" + user.getUsername() + "完成登录");
-		} catch (RuntimeException e) {
+		} catch (ErrorException e) {
 			ResponseUtils.sendMessage(response, false, e.getMessage());
 		} catch (Exception e) {
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");
+			e.printStackTrace();
 		}
 	}
 
@@ -110,12 +84,11 @@ public class UserController {
 				throw new RuntimeException("t_registerCode 您输入的验证码有误");
 			}
 			userService.register(user);
-			ResponseUtils.sendMessage(response, true, "注册成功");
+			ResponseUtils.sendMessage(response, true,null);
 			session.removeAttribute("imgCode");
 			log.info("用户：" + user.getUsername() + "完成注册");
-		} catch (RuntimeException e) {
+		} catch (ErrorException e) {
 			ResponseUtils.sendMessage(response, false, e.getMessage());
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");

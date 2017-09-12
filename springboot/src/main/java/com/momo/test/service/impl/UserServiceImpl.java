@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.momo.test.dao.UserDao;
+import com.momo.test.exception.ErrorException;
 import com.momo.test.pojo.User;
 import com.momo.test.service.UserService;
 import com.momo.test.utils.MD5Utils;
@@ -37,18 +38,18 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly=false)
 	public User login(User user) throws Exception {
 		if(StringUtils.isBlank(user.getUsername())){
-			throw new RuntimeException("请您输入用户名");
+			throw new ErrorException("请您输入用户名");
 		}
 		if(StringUtils.isBlank(user.getPassword())){
-			throw new RuntimeException("请您输入密码");
+			throw new ErrorException("请您输入密码");
 		}
 		User existUser = userDao.findUserByUsername(user.getUsername());
 		if(existUser == null){
-			throw new RuntimeException("用户名或密码不正确");
+			throw new ErrorException("用户名或密码不正确");
 		}
 		String md5Str = MD5Utils.getMD5Str(user.getPassword());
 		if(!md5Str.equals(existUser.getPassword())){
-			throw new RuntimeException("用户名或密码不正确");
+			throw new ErrorException("用户名或密码不正确");
 		}
 		existUser.setLastLoginTime(new Date());
 		userDao.save(existUser);
@@ -59,19 +60,19 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly=false)
 	public void register(User user) throws Exception {
 		if(StringUtils.isBlank(user.getUsername())){
-			throw new RuntimeException("t_username 用户名不能为空");
+			throw new ErrorException("t_username 用户名不能为空");
 		}
 		if(StringUtils.isBlank(user.getPassword())){
-			throw new RuntimeException("t_password 密码不能为空");
+			throw new ErrorException("t_password 密码不能为空");
 		}
 		if(StringUtils.isBlank(user.getRealName())){
-			throw new RuntimeException("t_realName 真实姓名不能为空");
+			throw new ErrorException("t_realName 真实姓名不能为空");
 		}
 		if(StringUtils.isBlank(user.getShowName())){
-			throw new RuntimeException("t_showName 昵称不能为空");
+			throw new ErrorException("t_showName 昵称不能为空");
 		}
 		if(user.getPhone() ==null){
-			throw new RuntimeException("t_phone 手机号不能为空");
+			throw new ErrorException("t_phone 手机号不能为空");
 		}
 		user.setCreateTime(new Date());
 		user.setId(UUIDUtils.getUUID32());

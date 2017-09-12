@@ -42,46 +42,51 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/head/style.css" type="text/css" />
-<!-- <link rel="stylesheet" href="/css/other.css">
- -->
+<link rel="stylesheet" href="/css/menu/toastr.css">
+
+<link rel="stylesheet" href="/css/checkbox/awesome-bootstrap-checkbox.css">
+<link rel="stylesheet" href="/css/checkbox/build.css">
+
 <!-- Modernizr JS -->
 <script src="/js/modernizr-2.6.2.min.js"></script>
-	<style type="text/css">
-		.scrollspy-example {
-			height: 600px;
-			overflow: auto;
-			position: relative;
-		}
-	</style>
+<style type="text/css">
+.scrollspy-example {
+	height: 600px;
+	overflow: auto;
+	position: relative;
+}
+</style>
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 <style type="text/css">
-  .MyBtn {
-  margin-right: 4px;
-  margin-bottom: 4px;
-  font-family: "Roboto", Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  -ms-border-radius: 0px;
-  border-radius: 0px;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-  padding: 8px 20px !important;
+.MyBtn {
+	margin-right: 4px;
+	margin-bottom: 4px;
+	font-family: "Roboto", Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-ms-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	padding: 8px 20px !important;
 }
+
 .MyBtn2 {
-  padding: 4px 15px !important;
+	padding: 4px 15px !important;
 }
+
 .MyBtn3 {
-  background: #5cb85c;
-  color: #fff;
-  border: 2px solid #5cb85c;
+	background: #5cb85c;
+	color: #fff;
+	border: 2px solid #5cb85c;
 }
 /* .myBtn4 {
   color: #fff;
@@ -89,7 +94,7 @@
 } */
 </style>
 </head>
-<body style="overflow-y:hidden">
+<body style="overflow-y: hidden">
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary"
@@ -127,9 +132,9 @@
 						style="font-family: 楷体; font-size: 18px">联系人</a></li>
 					<li><a href="/common/about"
 						style="font-family: 楷体; font-size: 18px">朋友圈</a></li>
-<!-- 					<li><a href="javascript:void(0)" -->
-<!-- 						style="font-family: 楷体; font-size: 18px" data-toggle="modal" -->
-<!-- 						data-target="#myModal">退出登录</a></li> -->
+					<!-- 					<li><a href="javascript:void(0)" -->
+					<!-- 						style="font-family: 楷体; font-size: 18px" data-toggle="modal" -->
+					<!-- 						data-target="#myModal">退出登录</a></li> -->
 				</ul>
 			</nav>
 
@@ -145,274 +150,401 @@
 
 		</aside>
 
-		<div id="fh5co-main" >
-		<img alt="" src="/images/logo8.png" width="100%" height="50px">
-		  <div id="navbarExample" class="navbar navbar-static" style="margin:0 auto;border:0;padding:0;">
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed"
-							data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">我的相册</a>
-					</div>
+		<div id="fh5co-main">
+			<img alt="" src="/images/logo8.png" width="100%" height="50px">
+			<div id="navbarExample" class="navbar navbar-static"
+				style="margin: 0 auto; border: 0; padding: 0;">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1"
+								aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">我的相册</a>
+						</div>
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="#">新建相册</a></li>
-							<li><a href="#">编辑相册</a></li>
-							<li><a href="#">删除相册</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">更多操作<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">One more separated link</a></li>
-								</ul></li>
-						</ul>
-						<form class="navbar-form navbar-right">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="请输入关键字">
-							</div>
-							<button type="submit" class="btn btn-info">搜  索</button>
-						</form>
-					</div>
-				</div>
-			</nav>
-			</div>
-			<div data-spy="scroll" data-target="#navbarExample" data-offset="50" class="scrollspy-example" style="margin-top:0px auto;border:0;padding:0;">
-			<div class="fh5co-narrow-content" style="margin-top:0px auto;border:0;padding:0;">
-				<div class="row row-bottom-padded-md" >
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-1.jpg);">
-							<div class="desc" style="width: 100%;height: 100%;position:relative;">
-								<div style="position:absolute;top:2%;right:2%;">
-								<span class="glyphicon glyphicon-edit" title="编辑" style="display: inline-block;font-size: 15px" ></span>&nbsp;&nbsp;
-								<span class="glyphicon glyphicon-trash" title="删除" style="display: inline-block;font-size: 15px"></span>&nbsp;&nbsp;
-								<span class="glyphicon glyphicon-upload" title="上传" style="display: inline-block;font-size: 15px"></span>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse"
+							id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li><a href="javascript:void(0)" data-toggle="modal"
+									data-target="#addOrEditAlbum" onclick="changeText('1')">新建相册</a></li>
+								<li><a href="#">编辑相册</a></li>
+								<li><a href="#">删除相册</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">更多操作<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#">One more separated link</a></li>
+									</ul></li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="请输入关键字">
 								</div>
-								<h3>不负好时光</h3>
-								<span>创建日期</span>
-							</div>
-						</a>
+								<button type="submit" class="btn btn-info">搜 索</button>
+							</form>
+						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-2.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Brading</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-3.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-4.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-5.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Brading</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-6.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-1.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-2.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Brading</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-1.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-2.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Brading</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-3.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-						<a href="#" class="work image-popup"
-							style="background-image: url(/images/img-4.jpg);">
-							<div class="desc">
-								<h3>Project Name</h3>
-								<span>Illustration</span>
-							</div>
-						</a>
-					</div>
-				<!-- </div> -->
+				</nav>
 			</div>
-
-			<div class="fh5co-narrow-content">
-				<div class="row">
-					<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
-						<h1 class="fh5co-heading-colored">Get in touch</h1>
+			<div data-spy="scroll" data-target="#navbarExample" data-offset="50"
+				class="scrollspy-example"
+				style="margin-top: 0px auto; border: 0; padding: 0;">
+				<div class="fh5co-narrow-content"
+					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
+					<div class="row row-bottom-padded-md">
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-1.jpg);">
+								<div class="desc"
+									style="width: 100%; height: 100%; position: relative;">
+									<div style="position: absolute; top: 2%; left: 2%;">
+										&nbsp; <span class="glyphicon glyphicon-edit" title="编辑"
+											style="display: inline-block; font-size: 15px"
+											data-toggle="modal" data-target="#addOrEditAlbum"
+											onclick="changeText('2')"></span>&nbsp;&nbsp; <span
+											class="glyphicon glyphicon-upload" title="上传"
+											style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp;
+									</div>
+									<div style="position: absolute; top: 2%; right: 2%;">
+										<span class="glyphicon glyphicon-trash" title="删除"
+											style="display: inline-block; font-size: 15px"></span>&nbsp;
+									</div>
+									<h3>不负好时光</h3>
+									<span>创建日期</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-2.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Brading</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-3.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-4.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-5.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Brading</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-6.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-1.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-2.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Brading</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-1.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-2.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Brading</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-3.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+							<a href="#" class="work image-popup"
+								style="background-image: url(/images/img-4.jpg);">
+								<div class="desc">
+									<h3>Project Name</h3>
+									<span>Illustration</span>
+								</div>
+							</a>
+						</div>
+						<!-- </div> -->
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
-						data-animate-effect="fadeInLeft">
-						<p class="fh5co-lead">Separated they live in Bookmarksgrove
-							right at the coast of the Semantics, a large language ocean.</p>
-						<p>
-							<a href="#" class="btn btn-primary">Learn More</a>
-						</p>
-					</div>
+					<!-- 			<div class="fh5co-narrow-content"> -->
+					<!-- 				<div class="row"> -->
+					<!-- 					<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft"> -->
+					<!-- 						<h1 class="fh5co-heading-colored">Get in touch</h1> -->
+					<!-- 					</div> -->
+					<!-- 				</div> -->
+					<!-- 				<div class="row"> -->
+					<!-- 					<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" -->
+					<!-- 						data-animate-effect="fadeInLeft"> -->
+					<!-- 						<p class="fh5co-lead">Separated they live in Bookmarksgrove -->
+					<!-- 							right at the coast of the Semantics, a large language ocean.</p> -->
+					<!-- 						<p> -->
+					<!-- 							<a href="#" class="btn btn-primary">Learn More</a> -->
+					<!-- 						</p> -->
+					<!-- 					</div> -->
 
+					<!-- 				</div> -->
+					<!-- 			</div> -->
 				</div>
 			</div>
 		</div>
-		</div>
-	</div>
-	<div class="modal fade container" id="myModal" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-		style="position: fixed; top: 30%">
-		<div class="modal-dialog" style="width: 300px; height: 30px">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h5 class="modal-title" id="myModalLabel">温馨提示：</h5>
-				</div>
-				<div class="modal-body">您，确定要退出登录吗？</div>
-				<div class="modal-footer">
-					<a href="/user/logout" style="color: white;"><button
-							type="button" class="btn btn-success btn-sm MyBtn MyBtn2"
-							style="font-size: 12px">退出登录</button></a>
-					<button type="button" class="btn btn-default btn-sm MyBtn MyBtn2"
-						data-dismiss="modal" style="font-size: 13px">取消</button>
+		<!-- 退出登录div -->
+		<div class="modal fade container" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			style="position: fixed; top: 30%">
+			<div class="modal-dialog" style="width: 300px; height: 30px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h5 class="modal-title" id="myModalLabel">温馨提示：</h5>
+					</div>
+					<div class="modal-body">您，确定要退出登录吗？</div>
+					<div class="modal-footer">
+						<a href="/user/logout" style="color: white;"><button
+								type="button" class="btn btn-success btn-sm MyBtn MyBtn2"
+								style="font-size: 12px">退出登录</button></a>
+						<button type="button" class="btn btn-default btn-sm MyBtn MyBtn2"
+							data-dismiss="modal" style="font-size: 13px">取消</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="modal fade container" id="editHead" tabindex="-1"
-		role="dialog" aria-labelledby="toEditHead" aria-hidden="true"
-		style="position: fixed; top: 0%;overflow-y: hidden;width: 446px;height:550px;border-radius:6px 6px 2px 6px;">
-		<div class="modal-dialog" style="margin:0 0 0 0">
-			<div class="modal-content">
-				<div class="modal-header" style="width: 430px">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h5 class="modal-title" id="toEditHead">修改头像：</h5>
-				</div>
-				<div class="modal-body" style="height:500px;width:446px;margin:0 0 0 0">
-					<div class="imageBox">
-						<div class="thumbBox" id="load"></div>
-						<div class="spinner" style="display: none">请选择一张图片</div>
+		<!-- 修改头像div -->
+		<div class="modal fade container" id="editHead" tabindex="-1"
+			role="dialog" aria-labelledby="toEditHead" aria-hidden="true"
+			style="position: fixed; top: 0%; overflow-y: hidden; width: 446px; height: 550px; border-radius: 6px 6px 2px 6px;">
+			<div class="modal-dialog" style="margin: 0 0 0 0">
+				<div class="modal-content">
+					<div class="modal-header" style="width: 430px">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h5 class="modal-title" id="toEditHead">修改头像：</h5>
 					</div>
-					<div class="action">
-						<form action="#" enctype="multipart/form-data" method="post"
-							id="uploadHead">
-							<div class="new-contentarea tc">
-								<a href="javascript:void(0)" class="upload-img"> <label
-									for="file">选择图片</label>
-								</a> <input type="hidden" name="headUrl" id="headUrl"> <input
-									type="file" class="" name="files" id="file" multiple="multiple" />
+					<div class="modal-body"
+						style="height: 500px; width: 446px; margin: 0 0 0 0">
+						<div class="imageBox">
+							<div class="thumbBox" id="load"></div>
+							<div class="spinner" style="display: none">请选择一张图片</div>
+						</div>
+						<div class="action">
+							<form action="#" enctype="multipart/form-data" method="post"
+								id="uploadHead">
+								<div class="new-contentarea tc">
+									<a href="javascript:void(0)" class="upload-img"> <label
+										for="file">选择图片</label>
+									</a> <input type="hidden" name="headUrl" id="headUrl"> <input
+										type="file" class="" name="files" id="file"
+										multiple="multiple" />
+								</div>
+								<input type="button" id="btnCrop" class="Btnsty_peyton"
+									value="上传" onclick="upload()"> <input type="button"
+									id="btnZoomIn" class="Btnsty_peyton" value="+"> <input
+									type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+							</form>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 新增或者修改相册div -->
+		<div class="modal fade container" id="addOrEditAlbum" tabindex="-1"
+			role="dialog" aria-labelledby="addAndEdit" aria-hidden="true"
+			style="position: fixed; top: 0%; width: 100%; height: 100%">
+			<div class="modal-dialog" style="">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h5 class="modal-title" id="addAndEdit"></h5>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" method="post" id="addOrEditForm">
+							<div class="form-group">
+								<label for="username" class="col-sm-2 control-label">相册名称：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="username"
+										name="username" placeholder="请输入相册名称"
+										onblur="checkParams(this.value,this.id),checkUsername(this.value)">
+									<span class="help-inline"
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong>0</strong>/30
+									</span>
+								</div>
 							</div>
-							<input type="button" id="btnCrop" class="Btnsty_peyton"
-								value="上传" onclick="upload()"> <input type="button"
-								id="btnZoomIn" class="Btnsty_peyton" value="+"> <input
-								type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">相册描述：</label>
+								<div class="col-sm-7">
+									<textarea rows="" cols="" class="form-control" id="password"
+										name="password" placeholder="说说这个相册的故事...(非必填)"
+										onblur="checkParams(this.value,this.id)"></textarea>
+									<span class="help-inline"
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong>0</strong>/2000
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">主题：</label>
+								<div class="col-sm-7">
+									<div class="radio radio-info radio-inline">
+		                        		<input type="radio" value="200" name="AlbumTheme" checked="checked">
+		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">普通</label>
+		                    		</div>
+		                    		<div class="radio radio-info radio-inline">
+		                        		<input type="radio" value="201" name="AlbumTheme" >
+		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">亲子</label>
+		                    		</div>
+		                    		<div class="radio radio-info radio-inline">
+		                        		<input type="radio" value="202" name="AlbumTheme" >
+		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">旅游</label>
+		                    		</div>
+		                    		<div class="radio radio-info radio-inline">
+		                        		<input id="alumnus" type="radio" value="203" name="AlbumTheme" >
+		                        		<label for="alumnus" onclick="$(this).prev().prop('checked',true)">校友</label>
+		                    		</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">分类：</label>
+								<div class="col-sm-7">
+									<select class="form-control" name="albumClassify">
+									  <option value="100" selected="selected" >最 爱</option>
+									  <option value="101">人 物</option>
+									  <option value="102">风 景</option>
+									  <option value="103">动 物</option>
+									  <option value="104">游 记</option>
+									  <option value="105">卡 通</option>
+									  <option value="106">生 活</option>
+									  <option value="107">其 他</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">系统权限：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="realName"
+										name="realName" placeholder="请输入真实姓名"
+										onblur="checkParams(this.value,this.id)">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">其他权限：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="phone" name="phone"
+										placeholder="请输入手机号">
+								</div>
+							</div>
 						</form>
 					</div>
-					<br>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-sm "
+							style="font-size: 12px">保 存</button>
+						<button type="button" class="btn btn-default btn-sm "
+							data-dismiss="modal" style="font-size: 13px">取 消</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="/js/jquery-1.9.1.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="/js/jquery.waypoints.min.js"></script>
-	<!-- Flexslider -->
-	<script src="/js/jquery.flexslider-min.js"></script>
-	<!-- Google Map -->
-	<!---<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+
+
+
+		<!-- jQuery -->
+		<script src="/js/jquery-1.9.1.min.js"></script>
+		<!-- jQuery Easing -->
+		<script src="/js/jquery.easing.1.3.js"></script>
+		<!-- Bootstrap -->
+		<script src="/js/bootstrap.min.js"></script>
+		<!-- Waypoints -->
+		<script src="/js/jquery.waypoints.min.js"></script>
+		<!-- Flexslider -->
+		<script src="/js/jquery.flexslider-min.js"></script>
+		<!-- Google Map -->
+		<!---<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>--->
+		<script src="/js/menu/toastr.js"></script>
 
-
-	<!-- MAIN JS -->
-	<script src="/js/main.js"></script>
-	<script src="/js/jquery.form.js"></script>
-	<script type="text/javascript" src="/js/head/cropbox.js"></script>
-	<script type="text/javascript" src="/js/head/head.js"></script>
-	<script type="text/javascript">
-		$('body').scrollspy({ target: '#navbar-example' });
-	</script>
+		<!-- MAIN JS -->
+		<script src="/js/main.js"></script>
+		<script src="/js/jquery.form.js"></script>
+		<script type="text/javascript" src="/js/head/cropbox.js"></script>
+		<script type="text/javascript" src="/js/head/head.js"></script>
+		<script type="text/javascript">
+			$('body').scrollspy({
+				target : '#navbar-example'
+			});
+			function changeText(obj) {
+				if (obj == '1') {
+					$("#addAndEdit").html("新建相册：");
+					$('#addOrEditForm')[0].reset();
+				} else {
+					$("#addAndEdit").html("编辑相册：");
+					$('#addOrEditForm')[0].reset();
+				}
+			}
+		</script>
 </body>
 </html>
 

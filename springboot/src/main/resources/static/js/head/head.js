@@ -54,10 +54,10 @@ function upload(){
 	        data: $("#uploadHead").serialize(),
 	        success: function (data) {
 	            if (data.success){
-	            	
 	            	$("#imageHead").prop("src",data.message);
+	            	toastr.success("头像上传成功");
 	            }else{
-	            	alert(data.message);
+	            	toastr.error(data.message);
 	            }
 	        }
 	 };

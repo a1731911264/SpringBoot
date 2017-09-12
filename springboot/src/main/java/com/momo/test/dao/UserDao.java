@@ -7,7 +7,7 @@ import com.momo.test.pojo.User;
 
 
 /*@CacheConfig(cacheNames="user")*/
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, String> {
 
 	/*@Cacheable(key="#p0")*/
 	public User findUserByUsername(String username) throws Exception;

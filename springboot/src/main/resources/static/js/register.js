@@ -100,7 +100,13 @@ function checkParams(value,flag){
 		                data: $("#registerForm").serialize(),
 		                success: function (data) {
 		                    if (data.success){
-		                    	window.location.href="/user/toLogin";
+		                    	toastr.success("恭喜您，注册成功");
+		                    	window.setTimeout(function(){
+		                    		toastr.info("3秒后跳转到登录界面...");
+		                    	},"2000");
+		                    	window.setTimeout(function(){
+		                    		window.location.href="/user/toLogin";
+		                    	},"5000");
 		                    }else{
 		                    	var strs = data.message.split(" ");
 		                    	$("#t_username").css("color","red");

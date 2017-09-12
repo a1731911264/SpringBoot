@@ -33,7 +33,7 @@
 	<link rel="stylesheet" href="/css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="/css/style.css">
-
+<link rel="stylesheet" href="/css/menu/toastr.css">
 	<!-- Modernizr JS -->
 	<script src="/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -114,8 +114,8 @@ width: 570px;height:464px;text-align: center;border-radius:10px 10px 10px 10px;v
 											      <input type="text" class="form-control" id="registerCode" name="registerCode" placeholder="请输入验证码" onblur="checkParams(this.value,this.id)" >
 											      <span class="help-inline" style="display:block;float:left;text-align:left;position: absolute;left:96%;top:3%;width: 69%;height: 50%"><img alt="看不清楚" src="/code/registerCode" width="100%" height="100%" onclick="changeCode()" id="registerCodeImg"></span>
 											    </div>
-											    <span class="help-inline" style="display:block;float:right;text-align:right;color: red;font-weight: bold;position: absolute;left:63.5%;" ><font color="red">*</font> </span>
-											    <span style="display:block;text-align:center;color: red;font-weight: bold;font-size: 10.5px;position: absolute;left:65.1%" id="t_registerCode"></span>
+											    <span class="help-inline" style="display:block;float:right;text-align:right;color: red;font-weight: bold;position: relative;left:-142px;" ><font color="red">*</font> </span>
+											    <span style="display:block;text-align:center;color: red;font-weight: bold;font-size: 10.5px;position: relative;left:42px" id="t_registerCode"></span>
 											  </div>
 											  <button type="button" class="btn btn-primary " data-loading-text="正在注册..." onclick="checkForm()" id="btn">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>
 										</form>
@@ -147,6 +147,7 @@ width: 570px;height:464px;text-align: center;border-radius:10px 10px 10px 10px;v
 	<script src="/js/main.js"></script>
 	<script src="/js/jquery.form.js"></script>
 	<script src="/js/register.js"></script>
+	<script src="/js/menu/toastr.js"></script>
 	<script type="text/javascript">
 	
 	</script>
