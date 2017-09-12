@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>jQuery头像裁剪插件DEMO演示</title>
-
-<link rel="stylesheet" href="/css/head/style.css" type="text/css" />
-
-</head>
-<body>
-<div class="container">
-  <div class="imageBox">
-	<div class="thumbBox" id="load"></div>
-	<div class="spinner" style="display: none">请选择一张图片</div>
-  </div>
-  <div class="action"> 
-  <form action="#" enctype="multipart/form-data" method="post" id="uploadHead">
-	<div class="new-contentarea tc"> 
-		<a href="javascript:void(0)" class="upload-img">
-			<label for="file">选择图片</label>
-	  </a>
-	  <input type="hidden" name="headUrl" id="headUrl">
-	  <input type="file" class="" name="files" id="file" multiple="multiple" />
-	</div>
-	<input type="button" id="btnCrop"  class="Btnsty_peyton" value="上传" onclick="upload()">
-	<input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
-	<input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
-	</form>
-  </div>
-</div>
-	
-<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/jquery.form.js"></script>
-<script type="text/javascript" src="/js/head/cropbox.js"></script>
-<script type="text/javascript">
 $(window).load(function() {
 	var options =
 	{
@@ -54,9 +17,9 @@ $(window).load(function() {
 		window.setTimeout(function (){
 			var img = cropper.getDataURL();
 			$('.cropped').html('');
-			$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:80px;margin-top:4px;border-radius:80px;box-shadow:0px 0px 12px #7E7E7E;"><p>80px*80px</p>');
+//			$('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:80px;margin-top:4px;border-radius:80px;box-shadow:0px 0px 12px #7E7E7E;"><p>80px*80px</p>');
 			$('#headUrl').val(img);
-		},'50');
+		},'100');
 	})
 	$('#load').on('mouseup', function(){
 		var img = cropper.getDataURL();
@@ -69,9 +32,13 @@ $(window).load(function() {
 	})
 	$('#btnZoomIn').on('click', function(){
 		cropper.zoomIn();
+		var img = cropper.getDataURL();
+		$('#headUrl').val(img);
 	})
 	$('#btnZoomOut').on('click', function(){
 		cropper.zoomOut();
+		var img = cropper.getDataURL();
+		$('#headUrl').val(img);
 	})
 });
 function upload(){
@@ -87,7 +54,8 @@ function upload(){
 	        data: $("#uploadHead").serialize(),
 	        success: function (data) {
 	            if (data.success){
-	            	alert(data.message);
+	            	
+	            	$("#imageHead").prop("src",data.message);
 	            }else{
 	            	alert(data.message);
 	            }
@@ -95,13 +63,3 @@ function upload(){
 	 };
 	 $.ajax(options);
 }
-
-</script>
-
-<!-- <div style="text-align:center;clear:both;padding-top:30px"> -->
-<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script> -->
-<!-- <script src="/follow.js" type="text/javascript"></script> -->
-<!-- </div> -->
-
-</body>
-</html>
