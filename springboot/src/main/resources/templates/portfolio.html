@@ -43,8 +43,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/head/style.css" type="text/css" />
 <link rel="stylesheet" href="/css/menu/toastr.css">
-
-<link rel="stylesheet" href="/css/checkbox/awesome-bootstrap-checkbox.css">
+<link rel="stylesheet" href="/css/checkbox/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/checkbox/build.css">
 
 <!-- Modernizr JS -->
@@ -427,22 +426,22 @@
 							<div class="form-group">
 								<label for="username" class="col-sm-2 control-label">相册名称：</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="username"
-										name="username" placeholder="请输入相册名称"
-										onblur="checkParams(this.value,this.id),checkUsername(this.value)">
+									<input type="text" class="form-control" id="albumName"
+										name="albumName" placeholder="为这个相册起个名字吧"
+										onkeyup="checkInputSize(this)">
 									<span class="help-inline"
-										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong>0</strong>/30
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="">0</strong>/30
 									</span>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="password" class="col-sm-2 control-label">相册描述：</label>
+								<label for="albumDesc" class="col-sm-2 control-label">相册描述：</label>
 								<div class="col-sm-7">
-									<textarea rows="" cols="" class="form-control" id="password"
-										name="password" placeholder="说说这个相册的故事...(非必填)"
-										onblur="checkParams(this.value,this.id)"></textarea>
+									<textarea rows="" cols="" class="form-control" id="albumDesc"
+										name="albumDesc" placeholder="说说这个相册的故事...(非必填)"
+										onkeyup="checkInputSize(this)"></textarea>
 									<span class="help-inline"
-										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong>0</strong>/2000
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="albumDescSize">0</strong>/2000
 									</span>
 								</div>
 							</div>
@@ -485,16 +484,31 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">系统权限：</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="realName"
-										name="realName" placeholder="请输入真实姓名"
-										onblur="checkParams(this.value,this.id)">
+									<select class="form-control" name="system">
+									  <option value="300" selected="selected" >所有人可见</option>
+									  <option value="301">好友可见</option>
+									  <option value="302">部分好友可见</option>
+									  <option value="303">部分好友不可见</option>
+									  <option value="304">仅自己可见</option>
+									  <option value="305">回答问题可见</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">其他权限：</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="phone" name="phone"
-										placeholder="请输入手机号">
+									<div class="checkbox checkbox-inline">
+		                        <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
+		                        <label for="inlineCheckbox1"> Inline One </label>
+		                    </div>
+		                    <div class="checkbox checkbox-success checkbox-inline">
+		                        <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1" checked>
+		                        <label for="inlineCheckbox2"> Inline Two </label>
+		                    </div>
+		                    <div class="checkbox checkbox-inline">
+		                        <input type="checkbox" class="styled" id="inlineCheckbox3" value="option1">
+		                        <label for="inlineCheckbox3"> Inline Three </label>
+		                    </div>
 								</div>
 							</div>
 						</form>
@@ -542,6 +556,15 @@
 				} else {
 					$("#addAndEdit").html("编辑相册：");
 					$('#addOrEditForm')[0].reset();
+				}
+			}
+			function checkInputSize(obj){
+				var size = obj.value.trim().length;
+				var id = obj.id;
+				if(id == 'albumName'){
+					$("#albumNameSize").html(size);
+				}else {
+					$("#albumDescSize").html(size);
 				}
 			}
 		</script>

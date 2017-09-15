@@ -23,7 +23,7 @@ var S = {
       S.UI.simulate("Hello :)");
     } else {
       /*S.UI.simulate('Welcome|to|Type|Album|#rectangle|#countdown 3||');*/
-      S.UI.simulate('Welcome|To|Album|Management|System|Hello :)');
+      S.UI.simulate('让我们|一起|分享生活|留住感动|时光相册|Welcome :)');
     }
     S.Drawing.loop(function () {
       S.Shape.render();
@@ -718,3 +718,8 @@ S.Shape = (function () {
 
 
 S.init();
+
+
+
+
+

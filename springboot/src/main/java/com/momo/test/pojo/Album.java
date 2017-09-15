@@ -59,12 +59,56 @@ public class Album implements Serializable {
 	@Column(nullable = true, unique = false)
 	private int status;
 	/**
+	 * 分类
+	 */
+	@Column(nullable = true, unique = false)
+	private int albumClassify;
+	/**
+	 * @return the albumClassify
+	 */
+	public int getAlbumClassify() {
+		return albumClassify;
+	}
+	/**
+	 * @param albumClassify the albumClassify to set
+	 */
+	public void setAlbumClassify(int albumClassify) {
+		this.albumClassify = albumClassify;
+	}
+	/**
 	 * 相册权限（0 公开 1 好友 2仅自己 ）
 	 */
 	@Column(nullable = true, unique = false)
-	private int authority;
+	private int systemAuthority;
 	@Column(nullable = false, unique = false)
 	private int imageSize;
+	// 其他权限 是否允许转载等
+	@Column(nullable = false, unique = false)
+	private int otherAuthority;
+	/**
+	 * @return the systemAuthority
+	 */
+	public int getSystemAuthority() {
+		return systemAuthority;
+	}
+	/**
+	 * @param systemAuthority the systemAuthority to set
+	 */
+	public void setSystemAuthority(int systemAuthority) {
+		this.systemAuthority = systemAuthority;
+	}
+	/**
+	 * @return the otherAuthority
+	 */
+	public int getOtherAuthority() {
+		return otherAuthority;
+	}
+	/**
+	 * @param otherAuthority the otherAuthority to set
+	 */
+	public void setOtherAuthority(int otherAuthority) {
+		this.otherAuthority = otherAuthority;
+	}
 	/**
 	 * @return the albumId
 	 */
@@ -164,15 +208,7 @@ public class Album implements Serializable {
 	/**
 	 * @return the authority
 	 */
-	public int getAuthority() {
-		return authority;
-	}
-	/**
-	 * @param authority the authority to set
-	 */
-	public void setAuthority(int authority) {
-		this.authority = authority;
-	}
+	
 	
 	
 }
