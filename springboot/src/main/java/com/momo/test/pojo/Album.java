@@ -44,6 +44,11 @@ public class Album implements Serializable {
 	@Column(nullable = true, unique = false)
 	private LocalDateTime createDate;
 	/**
+	 * 修改日期
+	 */
+	@Column(nullable = false, unique = false)
+	private LocalDateTime updateDate;
+	/**
 	 * 描述
 	 */
 	@Column(nullable = false, unique = false)
@@ -208,6 +213,12 @@ public class Album implements Serializable {
 	/**
 	 * @return the authority
 	 */
+	public LocalDateTime getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(LocalDateTime updateDate) {
+		this.updateDate = updateDate;
+	}
 	
 	
 	

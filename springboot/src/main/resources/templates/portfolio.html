@@ -125,7 +125,7 @@
 				<ul>
 					<li><a href="/user/index"
 						style="font-family: 楷体; font-size: 18px">主页</a></li>
-					<li class="fh5co-active"><a href="/common/portfolio"
+					<li class="fh5co-active"><a href="/album/queryAlbumList"
 						style="font-family: 楷体; font-size: 18px">相册</a></li>
 					<li><a href="/common/blog"
 						style="font-family: 楷体; font-size: 18px">联系人</a></li>
@@ -189,9 +189,9 @@
 										<li><a href="#">One more separated link</a></li>
 									</ul></li>
 							</ul>
-							<form class="navbar-form navbar-right">
+							<form class="navbar-form navbar-right" action="/album/queryAlbumList" >
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="请输入关键字">
+									<input id="serch" type="text" class="form-control" placeholder="请输入关键字">
 								</div>
 								<button type="submit" class="btn btn-info">搜 索</button>
 							</form>
@@ -204,10 +204,10 @@
 				style="margin-top: 0px auto; border: 0; padding: 0;">
 				<div class="fh5co-narrow-content"
 					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
-					<div class="row row-bottom-padded-md">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+					<div class="row row-bottom-padded-md" >
+						<div  class="col-md-3 col-sm-6 col-padding text-center animate-box" th:each="album,albumStat:${albums}">
 							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
+								th:attr="style=${'background-image: url('+album.cover +')'}" >
 								<div class="desc"
 									style="width: 100%; height: 100%; position: relative;">
 									<div style="position: absolute; top: 2%; left: 2%;">
@@ -222,110 +222,12 @@
 										<span class="glyphicon glyphicon-trash" title="删除"
 											style="display: inline-block; font-size: 15px"></span>&nbsp;
 									</div>
-									<h3>不负好时光</h3>
-									<span>创建日期</span>
+									<h3 th:text = "${album.albumName}">不负好时光</h3>
+									<span th:text="${album.createDate}">创建日期</span>
 								</div>
 							</a>
 						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-3.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-4.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-5.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-6.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-3.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-4.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
+					
 						<!-- </div> -->
 					</div>
 					<!-- 			<div class="fh5co-narrow-content"> -->
@@ -421,23 +323,23 @@
 							aria-hidden="true">&times;</button>
 						<h5 class="modal-title" id="addAndEdit"></h5>
 					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" method="post" id="addOrEditForm">
+					<div   class="modal-body">
+						<form class="form-horizontal" method="post" id="addOrEditForm" action="/album/saveOrUpdateAlbum" >
 							<div class="form-group">
 								<label for="username" class="col-sm-2 control-label">相册名称：</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="albumName"
+									<input type="text" maxlength="30" class="form-control" id="albumName"
 										name="albumName" placeholder="为这个相册起个名字吧"
 										onkeyup="checkInputSize(this)">
 									<span class="help-inline"
-										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="">0</strong>/30
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="albumNameSize">0</strong>/30
 									</span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="albumDesc" class="col-sm-2 control-label">相册描述：</label>
 								<div class="col-sm-7">
-									<textarea rows="" cols="" class="form-control" id="albumDesc"
+									<textarea rows="" maxlength="2000" cols="" class="form-control" id="albumDesc"
 										name="albumDesc" placeholder="说说这个相册的故事...(非必填)"
 										onkeyup="checkInputSize(this)"></textarea>
 									<span class="help-inline"
@@ -497,24 +399,26 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">其他权限：</label>
 								<div class="col-sm-7">
-									<div class="checkbox checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
-		                        <label for="inlineCheckbox1"> Inline One </label>
-		                    </div>
-		                    <div class="checkbox checkbox-success checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1" checked>
-		                        <label for="inlineCheckbox2"> Inline Two </label>
-		                    </div>
-		                    <div class="checkbox checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox3" value="option1">
-		                        <label for="inlineCheckbox3"> Inline Three </label>
-		                    </div>
+									
+				                    <div class="checkbox checkbox-info " onclick="checkBox(this)">
+				                        <input type="checkbox" class="styled"  value="option1" checked>
+				                        <label for="inlineCheckbox2">允许转载</label>
+				                    </div>
+				                    <div class="checkbox checkbox-info " onclick="checkBox(this)">
+				                        <input type="checkbox" class="styled"  value="option1" >
+				                        <label for="inlineCheckbox2">允许陌生人圈人</label>
+				                    </div>
+				                    <div class="checkbox checkbox-info " onclick="checkBox(this)">
+				                        <input type="checkbox" class="styled"  value="option1" >
+				                        <label for="inlineCheckbox2">对访客隐藏拍摄信息</label>
+				                    </div>
+		                    
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btn-sm "
+						<button type="button" id="albumSave" class="btn btn-primary btn-sm "
 							style="font-size: 12px">保 存</button>
 						<button type="button" class="btn btn-default btn-sm "
 							data-dismiss="modal" style="font-size: 13px">取 消</button>
@@ -559,14 +463,51 @@
 				}
 			}
 			function checkInputSize(obj){
+				
 				var size = obj.value.trim().length;
 				var id = obj.id;
 				if(id == 'albumName'){
 					$("#albumNameSize").html(size);
+					
 				}else {
 					$("#albumDescSize").html(size);
+					
 				}
 			}
+			function checkBox(obj){
+				var state =  $(obj).children(':first').prop('checked');
+				if(state){
+					$(obj).children(':first').prop('checked',false);
+				}else{
+					$(obj).children(':first').prop('checked',true);
+				}
+			}
+			$("#albumSave").click(function (){
+				toastr.success("正在保存...");
+				$("#albumSave").attr("disabled",true);
+				 var options = {
+			                url: '/album/saveOrUpdateAlbum',
+			                type: 'post',
+			                dataType: 'json',
+			                data: $("#addOrEditForm").serialize(),
+			                success: function (data) {
+			                	if(data.success==true){
+			                		
+			                		$('#addOrEditAlbum').modal('hide');
+			                		toastr.success("保存成功(*_*)");
+			                		$("#albumSave").attr("disabled",false);
+			                		window.location.href = "/album/queryAlbumList?albumName="+$("#serch").val();
+			                	}else{
+			                		toastr.error(data.message);
+			                	}
+			                	
+			                }
+			         };
+			         $.ajax(options);
+				
+			});
+			
+			
 		</script>
 </body>
 </html>
