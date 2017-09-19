@@ -3,19 +3,26 @@ package com.momo.test.controller;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.momo.test.exception.ErrorException;
+import com.momo.test.pojo.Album;
 import com.momo.test.pojo.User;
+import com.momo.test.service.AlbumService;
 import com.momo.test.utils.ResponseUtils;
 import com.momo.test.utils.UUIDUtils;
 
@@ -26,6 +33,9 @@ public class CommonController {
 	// 资源文件路径
 	public static final String RESOURCE_PATH = CommonController.class.getClassLoader().getResource("").getPath();
 
+	@Autowired
+	private AlbumService albumService;
+	
 	// 跳转home
 	@RequestMapping("/home")
 	public String home() {
@@ -48,7 +58,25 @@ public class CommonController {
 	}
 
 	@RequestMapping("/portfolio")
-	public String portfolio() {
+	public String portfolio(Album album,Model moded,HttpSession session,HttpServletResponse response) {
+		
+		// 判断用户是否登陆
+		try {
+			User user = (User) session.getAttribute("user");
+			if(user == null || StringUtils.isBlank(user.getId())){
+				throw new RuntimeException("您还没有登录，请先去登录！");
+			}
+			album.setUserId(user.getId());
+			List<Album> list =  albumService.queryAlbumList(album);			
+			moded.addAttribute("albums", list);
+			moded.addAttribute("Album", album);
+		} catch(ErrorException e){
+			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
+		} catch (Exception e) {
+			ResponseUtils.sendMessage(response, false, "服务器繁忙,请稍候再试！");
+			e.printStackTrace();
+		}
+		
 		return "portfolio";
 	}
 

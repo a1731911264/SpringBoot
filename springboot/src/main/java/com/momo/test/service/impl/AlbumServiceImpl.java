@@ -2,6 +2,7 @@ package com.momo.test.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -41,7 +42,7 @@ public class AlbumServiceImpl implements AlbumService {
 		//删除标志
 		album.setStatus(0);
 		// 设置创建时间
-		album.setCreateDate(LocalDateTime.now());
+		album.setCreateDate(new Date());
 		Album save = albumDao.save(album);
 		if (save ==null) {
 			throw new ErrorException("新建相册失败，请稍候再试！");

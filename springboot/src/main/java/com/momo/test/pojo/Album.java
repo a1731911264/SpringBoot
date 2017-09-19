@@ -42,12 +42,12 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
-	private LocalDateTime createDate;
+	private Date createDate;
 	/**
 	 * 修改日期
 	 */
-	@Column(nullable = false, unique = false)
-	private LocalDateTime updateDate;
+	@Column(nullable = true, unique = false)
+	private Date updateDate;
 	/**
 	 * 描述
 	 */
@@ -165,15 +165,7 @@ public class Album implements Serializable {
 	/**
 	 * @return the createDate
 	 */
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-	/**
-	 * @param createDate the createDate to set
-	 */
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
+
 	/**
 	 * @return the albumDesc
 	 */
@@ -213,13 +205,19 @@ public class Album implements Serializable {
 	/**
 	 * @return the authority
 	 */
-	public LocalDateTime getUpdateDate() {
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(LocalDateTime updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
+
 	
 	
 }

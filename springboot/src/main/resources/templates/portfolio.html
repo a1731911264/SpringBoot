@@ -204,8 +204,8 @@
 				style="margin-top: 0px auto; border: 0; padding: 0;">
 				<div class="fh5co-narrow-content"
 					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
-					<div class="row row-bottom-padded-md" >
-						<div  class="col-md-3 col-sm-6 col-padding text-center animate-box" th:each="album,albumStat:${albums}">
+					<div id="para" class="row row-bottom-padded-md" >
+						<div   class="col-md-3 col-sm-6 col-padding text-center animate-box" th:each="album,albumStat:${albums}">
 							<a href="#" class="work image-popup"
 								th:attr="style=${'background-image: url('+album.cover +')'}" >
 								<div class="desc"
@@ -418,7 +418,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="albumSave" class="btn btn-primary btn-sm "
+						<button type="button"  data-loading-text="正在保存..." id="albumSave" class="btn btn-primary btn-sm "
 							style="font-size: 12px">保 存</button>
 						<button type="button" class="btn btn-default btn-sm "
 							data-dismiss="modal" style="font-size: 13px">取 消</button>
@@ -449,6 +449,7 @@
 		<script src="/js/jquery.form.js"></script>
 		<script type="text/javascript" src="/js/head/cropbox.js"></script>
 		<script type="text/javascript" src="/js/head/head.js"></script>
+		<script type="text/javascript" src="/js/album.js"></script>
 		<script type="text/javascript">
 			$('body').scrollspy({
 				target : '#navbar-example'
@@ -483,22 +484,25 @@
 				}
 			}
 			$("#albumSave").click(function (){
-				toastr.success("正在保存...");
-				$("#albumSave").attr("disabled",true);
+				
+				var $btn = $("#albumSave").button('loading');
+				
 				 var options = {
 			                url: '/album/saveOrUpdateAlbum',
 			                type: 'post',
 			                dataType: 'json',
 			                data: $("#addOrEditForm").serialize(),
 			                success: function (data) {
-			                	if(data.success==true){
 			                		
-			                		$('#addOrEditAlbum').modal('hide');
+			                	if(data.success==true){
 			                		toastr.success("保存成功(*_*)");
-			                		$("#albumSave").attr("disabled",false);
-			                		window.location.href = "/album/queryAlbumList?albumName="+$("#serch").val();
+			                		$('#addOrEditAlbum').modal('hide');
+			                		var val =  $("#serch").val();
+			                		relaod(val);
+			                		$btn.button('reset');
 			                	}else{
 			                		toastr.error(data.message);
+			                		$btn.button('reset');
 			                	}
 			                	
 			                }
