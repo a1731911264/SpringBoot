@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.alibaba.fastjson.annotation.JSONField;
 @Entity
 public class Album implements Serializable {
 
@@ -42,6 +44,7 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
+	@JSONField(format="yyyy年-MM月-dd日")
 	private Date createDate;
 	/**
 	 * 修改日期

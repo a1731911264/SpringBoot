@@ -45,7 +45,7 @@ public class UserController {
 			ResponseUtils.sendMessage(response, true, null);
 			log.info("用户：" + user.getUsername() + "完成登录");
 		} catch (ErrorException e) {
-			ResponseUtils.sendMessage(response, false, e.getMessage());
+			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
 		} catch (Exception e) {
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");
 			e.printStackTrace();
@@ -88,7 +88,7 @@ public class UserController {
 			session.removeAttribute("imgCode");
 			log.info("用户：" + user.getUsername() + "完成注册");
 		} catch (ErrorException e) {
-			ResponseUtils.sendMessage(response, false, e.getMessage());
+			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");

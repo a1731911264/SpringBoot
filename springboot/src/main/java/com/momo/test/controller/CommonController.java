@@ -67,8 +67,12 @@ public class CommonController {
 				throw new RuntimeException("您还没有登录，请先去登录！");
 			}
 			album.setUserId(user.getId());
-			List<Album> list =  albumService.queryAlbumList(album);			
-			moded.addAttribute("albums", list);
+			List<Album> list =  albumService.queryAlbumList(album);	
+			if(list==null || list.size()==0){
+				moded.addAttribute("albums", null);
+			}else{
+				moded.addAttribute("albums", list);
+			}
 			moded.addAttribute("Album", album);
 		} catch(ErrorException e){
 			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
