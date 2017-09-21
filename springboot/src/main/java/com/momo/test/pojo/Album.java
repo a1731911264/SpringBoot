@@ -44,7 +44,7 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
-	@JSONField(format="yyyy年-MM月-dd日")
+	@JSONField(format="yyyy年/MM月/dd日")
 	private Date createDate;
 	/**
 	 * 修改日期

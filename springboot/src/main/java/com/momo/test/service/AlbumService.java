@@ -11,4 +11,6 @@ public interface AlbumService {
 	public void updateAlbum(Album album) throws Exception;
 
 	public List<Album> queryAlbumList(Album album) throws Exception;
+	
+	public void deleteAlbum(String albumId) throws Exception;
 }

@@ -195,20 +195,51 @@
 									<input id="serch" type="text" class="form-control"
 										placeholder="请输入关键字">
 								</div>
-								<button type="submit" class="btn btn-info">搜 索</button>
+								<button type="submit" class="btn btn-primary">搜 索</button>
 							</form>
+						</div>
+						<!-- 默认封面 -->
+		<div th:unless="${albums !=null }">
+							<div id="fh5co-main" style="width: 100%;height: 100%" >
+								<aside id="fh5co-hero" class="js-fullheight">
+									<div class="flexslider js-fullheight"  style="width: 100%;height: 100%" >
+										<ul class="slides">
+											<li style="background-image: url(/images/photo-blank.jpg);width: 100%;height: 100%">
+												<div class="overlay"></div>
+												<div class="container-fluid">
+													<div class="row">
+														<div
+															class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+															<div class="slider-text-inner">
+																<h1>
+																	生活不只是眼前的苟且<br>还有诗和远方
+																	      
+																</h1>
+																<p>
+																	<a class="btn btn-primary btn-demo popup-vimeo btn-lg " href="javascript:void(0)" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText('1')">
+																		<i class="icon-monitor"></i> 创建相册</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</aside>
+							</div>
 						</div>
 					</div>
 				</nav>
 			</div>
-			<div data-spy="scroll" data-target="#navbarExample" data-offset="50"
+			<div th:if="${album}" data-spy="scroll" data-target="#navbarExample" data-offset="50"
 				class="scrollspy-example"
 				style="margin-top: 0px auto; border: 0; padding: 0;">
 				<div class="fh5co-narrow-content"
 					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
 					<div id="albumParentDiv" class="row row-bottom-padded-md">
 						<div class="col-md-3 col-sm-6 col-padding text-center animate-box"
-							th:each="album,albumStat:${albums}" th:if="${album}" >
+							th:each="album,albumStat:${albums}" >
 							<a href="#" class="work image-popup"
 								th:attr="style=${'background-image: url('+album.cover +')'}">
 								<div class="desc"
@@ -229,9 +260,6 @@
 									<span th:text="${album.createDate}">创建日期</span>
 								</div>
 							</a>
-						</div>
-						<div th:unless="${albums !=null }">
-							111222333
 						</div>
 						<!-- </div> -->
 					</div>
@@ -256,6 +284,8 @@
 				</div>
 			</div>
 		</div>
+		
+						
 		<!-- 退出登录div -->
 		<div class="modal fade container" id="myModal" tabindex="-1"
 			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
