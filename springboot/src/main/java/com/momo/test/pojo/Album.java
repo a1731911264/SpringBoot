@@ -2,13 +2,13 @@ package com.momo.test.pojo;
 // 相册实体类
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -17,7 +17,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 @Entity
 public class Album implements Serializable {
 
-	
+	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy年MM月dd日");
 	/**
 	 * 
 	 */
@@ -44,7 +44,6 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
-	@JSONField(format="yyyy年/MM月/dd日")
 	private Date createDate;
 	/**
 	 * 修改日期
@@ -221,6 +220,8 @@ public class Album implements Serializable {
 		this.updateDate = updateDate;
 	}
 
-	
+	public String getCreateDataString(){
+		return FORMAT.format(createDate);
+	}
 	
 }

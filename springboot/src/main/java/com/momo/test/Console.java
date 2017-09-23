@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.momo.test.config.CheckImgServlet;
 @SpringBootApplication(scanBasePackages={"com.momo.test.controller","com.momo.test.service","com.momo.test.dao","com.momo.test.config"})
