@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.alibaba.fastjson.annotation.JSONField;
 @Entity
 public class Album implements Serializable {
 
@@ -42,7 +44,13 @@ public class Album implements Serializable {
 	 * 创建日期
 	 */
 	@Column(nullable = true, unique = false)
-	private LocalDateTime createDate;
+	@JSONField(format="yyyy年/MM月/dd日")
+	private Date createDate;
+	/**
+	 * 修改日期
+	 */
+	@Column(nullable = true, unique = false)
+	private Date updateDate;
 	/**
 	 * 描述
 	 */
@@ -160,15 +168,7 @@ public class Album implements Serializable {
 	/**
 	 * @return the createDate
 	 */
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-	/**
-	 * @param createDate the createDate to set
-	 */
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
+
 	/**
 	 * @return the albumDesc
 	 */
@@ -208,7 +208,19 @@ public class Album implements Serializable {
 	/**
 	 * @return the authority
 	 */
-	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
 	
 	
 }
