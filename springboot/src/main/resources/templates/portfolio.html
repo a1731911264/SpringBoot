@@ -125,7 +125,7 @@
 				<ul>
 					<li><a href="/user/index"
 						style="font-family: 楷体; font-size: 18px">主页</a></li>
-					<li class="fh5co-active"><a href="/common/portfolio"
+					<li class="fh5co-active"><a href="/album/queryAlbumList"
 						style="font-family: 楷体; font-size: 18px">相册</a></li>
 					<li><a href="/common/blog"
 						style="font-family: 楷体; font-size: 18px">联系人</a></li>
@@ -189,25 +189,59 @@
 										<li><a href="#">One more separated link</a></li>
 									</ul></li>
 							</ul>
-							<form class="navbar-form navbar-right">
+							<form class="navbar-form navbar-right"
+								action="/album/queryAlbumList">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="请输入关键字">
+									<input id="serch" type="text" class="form-control"
+										placeholder="请输入关键字">
 								</div>
-								<button type="submit" class="btn btn-info">搜 索</button>
+								<button type="submit" class="btn btn-primary">搜 索</button>
 							</form>
+						</div>
+						<!-- 默认封面 -->
+		<div th:unless="${albums !=null }">
+							<div id="fh5co-main" style="width: 100%;height: 100%" >
+								<aside id="fh5co-hero" class="js-fullheight">
+									<div class="flexslider js-fullheight"  style="width: 100%;height: 100%" >
+										<ul class="slides">
+											<li style="background-image: url(/images/photo-blank.jpg);width: 100%;height: 100%">
+												<div class="overlay"></div>
+												<div class="container-fluid">
+													<div class="row">
+														<div
+															class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+															<div class="slider-text-inner">
+																<h1>
+																	生活不只是眼前的苟且<br>还有诗和远方
+																	      
+																</h1>
+																<p>
+																	<a class="btn btn-primary btn-demo popup-vimeo btn-lg " href="javascript:void(0)" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText('1')">
+																		<i class="icon-monitor"></i> 创建相册</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</aside>
+							</div>
 						</div>
 					</div>
 				</nav>
 			</div>
-			<div data-spy="scroll" data-target="#navbarExample" data-offset="50"
+			<div th:if="${album}" data-spy="scroll" data-target="#navbarExample" data-offset="50"
 				class="scrollspy-example"
 				style="margin-top: 0px auto; border: 0; padding: 0;">
 				<div class="fh5co-narrow-content"
 					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
-					<div class="row row-bottom-padded-md">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
+					<div id="albumParentDiv" class="row row-bottom-padded-md">
+						<div class="col-md-3 col-sm-6 col-padding text-center animate-box"
+							th:each="album,albumStat:${albums}" >
 							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
+								th:attr="style=${'background-image: url('+album.cover +')'}">
 								<div class="desc"
 									style="width: 100%; height: 100%; position: relative;">
 									<div style="position: absolute; top: 2%; left: 2%;">
@@ -222,107 +256,8 @@
 										<span class="glyphicon glyphicon-trash" title="删除"
 											style="display: inline-block; font-size: 15px"></span>&nbsp;
 									</div>
-									<h3>不负好时光</h3>
-									<span>创建日期</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-3.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-4.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-5.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-6.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-1.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-2.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Brading</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-3.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box">
-							<a href="#" class="work image-popup"
-								style="background-image: url(/images/img-4.jpg);">
-								<div class="desc">
-									<h3>Project Name</h3>
-									<span>Illustration</span>
+									<h3 th:text="${album.albumName}">不负好时光</h3>
+									<span th:text="${album.createDate}">创建日期</span>
 								</div>
 							</a>
 						</div>
@@ -349,6 +284,8 @@
 				</div>
 			</div>
 		</div>
+		
+						
 		<!-- 退出登录div -->
 		<div class="modal fade container" id="myModal" tabindex="-1"
 			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -422,62 +359,67 @@
 						<h5 class="modal-title" id="addAndEdit"></h5>
 					</div>
 					<div class="modal-body">
-						<form class="form-horizontal" method="post" id="addOrEditForm">
+						<form class="form-horizontal" method="post" id="addOrEditForm"
+							action="/album/saveOrUpdateAlbum">
 							<div class="form-group">
 								<label for="username" class="col-sm-2 control-label">相册名称：</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="albumName"
-										name="albumName" placeholder="为这个相册起个名字吧"
-										onkeyup="checkInputSize(this)">
-									<span class="help-inline"
-										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="">0</strong>/30
-									</span>
+									<input type="text" maxlength="30" class="form-control"
+										id="albumName" name="albumName" placeholder="为这个相册起个名字吧"
+										onkeyup="checkInputSize(this)"> <span
+										class="help-inline"
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong
+										id="albumNameSize">0</strong>/30 </span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="albumDesc" class="col-sm-2 control-label">相册描述：</label>
 								<div class="col-sm-7">
-									<textarea rows="" cols="" class="form-control" id="albumDesc"
-										name="albumDesc" placeholder="说说这个相册的故事...(非必填)"
-										onkeyup="checkInputSize(this)"></textarea>
+									<textarea rows="" maxlength="2000" cols="" class="form-control"
+										id="albumDesc" name="albumDesc"
+										placeholder="说说这个相册的故事...(非必填)" onkeyup="checkInputSize(this)"></textarea>
 									<span class="help-inline"
-										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong id="albumDescSize">0</strong>/2000
-									</span>
+										style="display: block; float: left; text-align: left; position: absolute; left: 100%; top: 0%"><strong
+										id="albumDescSize">0</strong>/2000 </span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">主题：</label>
 								<div class="col-sm-7">
 									<div class="radio radio-info radio-inline">
-		                        		<input type="radio" value="200" name="AlbumTheme" checked="checked">
-		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">普通</label>
-		                    		</div>
-		                    		<div class="radio radio-info radio-inline">
-		                        		<input type="radio" value="201" name="AlbumTheme" >
-		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">亲子</label>
-		                    		</div>
-		                    		<div class="radio radio-info radio-inline">
-		                        		<input type="radio" value="202" name="AlbumTheme" >
-		                        		<label for="inlineRadio1" onclick="$(this).prev().prop('checked',true)">旅游</label>
-		                    		</div>
-		                    		<div class="radio radio-info radio-inline">
-		                        		<input id="alumnus" type="radio" value="203" name="AlbumTheme" >
-		                        		<label for="alumnus" onclick="$(this).prev().prop('checked',true)">校友</label>
-		                    		</div>
+										<input type="radio" value="200" name="AlbumTheme"
+											checked="checked"> <label for="inlineRadio1"
+											onclick="$(this).prev().prop('checked',true)">普通</label>
+									</div>
+									<div class="radio radio-info radio-inline">
+										<input type="radio" value="201" name="AlbumTheme"> <label
+											for="inlineRadio1"
+											onclick="$(this).prev().prop('checked',true)">亲子</label>
+									</div>
+									<div class="radio radio-info radio-inline">
+										<input type="radio" value="202" name="AlbumTheme"> <label
+											for="inlineRadio1"
+											onclick="$(this).prev().prop('checked',true)">旅游</label>
+									</div>
+									<div class="radio radio-info radio-inline">
+										<input id="alumnus" type="radio" value="203" name="AlbumTheme">
+										<label for="alumnus"
+											onclick="$(this).prev().prop('checked',true)">校友</label>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">分类：</label>
 								<div class="col-sm-7">
 									<select class="form-control" name="albumClassify">
-									  <option value="100" selected="selected" >最 爱</option>
-									  <option value="101">人 物</option>
-									  <option value="102">风 景</option>
-									  <option value="103">动 物</option>
-									  <option value="104">游 记</option>
-									  <option value="105">卡 通</option>
-									  <option value="106">生 活</option>
-									  <option value="107">其 他</option>
+										<option value="100" selected="selected">最 爱</option>
+										<option value="101">人 物</option>
+										<option value="102">风 景</option>
+										<option value="103">动 物</option>
+										<option value="104">游 记</option>
+										<option value="105">卡 通</option>
+										<option value="106">生 活</option>
+										<option value="107">其 他</option>
 									</select>
 								</div>
 							</div>
@@ -485,37 +427,40 @@
 								<label for="password" class="col-sm-2 control-label">系统权限：</label>
 								<div class="col-sm-7">
 									<select class="form-control" name="system">
-									  <option value="300" selected="selected" >所有人可见</option>
-									  <option value="301">好友可见</option>
-									  <option value="302">部分好友可见</option>
-									  <option value="303">部分好友不可见</option>
-									  <option value="304">仅自己可见</option>
-									  <option value="305">回答问题可见</option>
+										<option value="300" selected="selected">所有人可见</option>
+										<option value="301">好友可见</option>
+										<option value="302">部分好友可见</option>
+										<option value="303">部分好友不可见</option>
+										<option value="304">仅自己可见</option>
+										<option value="305">回答问题可见</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">其他权限：</label>
 								<div class="col-sm-7">
-									<div class="checkbox checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
-		                        <label for="inlineCheckbox1"> Inline One </label>
-		                    </div>
-		                    <div class="checkbox checkbox-success checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1" checked>
-		                        <label for="inlineCheckbox2"> Inline Two </label>
-		                    </div>
-		                    <div class="checkbox checkbox-inline">
-		                        <input type="checkbox" class="styled" id="inlineCheckbox3" value="option1">
-		                        <label for="inlineCheckbox3"> Inline Three </label>
-		                    </div>
+
+									<div class="checkbox checkbox-info " onclick="checkBox(this)">
+										<input type="checkbox" class="styled" value="option1" checked>
+										<label for="inlineCheckbox2">允许转载</label>
+									</div>
+									<div class="checkbox checkbox-info " onclick="checkBox(this)">
+										<input type="checkbox" class="styled" value="option1">
+										<label for="inlineCheckbox2">允许陌生人圈人</label>
+									</div>
+									<div class="checkbox checkbox-info " onclick="checkBox(this)">
+										<input type="checkbox" class="styled" value="option1">
+										<label for="inlineCheckbox2">对访客隐藏拍摄信息</label>
+									</div>
+
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btn-sm "
-							style="font-size: 12px">保 存</button>
+						<button type="button" data-loading-text="正在保存..." id="albumSave"
+							class="btn btn-primary btn-sm " style="font-size: 12px">保
+							存</button>
 						<button type="button" class="btn btn-default btn-sm "
 							data-dismiss="modal" style="font-size: 13px">取 消</button>
 					</div>
@@ -545,29 +490,7 @@
 		<script src="/js/jquery.form.js"></script>
 		<script type="text/javascript" src="/js/head/cropbox.js"></script>
 		<script type="text/javascript" src="/js/head/head.js"></script>
-		<script type="text/javascript">
-			$('body').scrollspy({
-				target : '#navbar-example'
-			});
-			function changeText(obj) {
-				if (obj == '1') {
-					$("#addAndEdit").html("新建相册：");
-					$('#addOrEditForm')[0].reset();
-				} else {
-					$("#addAndEdit").html("编辑相册：");
-					$('#addOrEditForm')[0].reset();
-				}
-			}
-			function checkInputSize(obj){
-				var size = obj.value.trim().length;
-				var id = obj.id;
-				if(id == 'albumName'){
-					$("#albumNameSize").html(size);
-				}else {
-					$("#albumDescSize").html(size);
-				}
-			}
-		</script>
+		<script type="text/javascript" src="/js/album/album.js"></script>
 </body>
 </html>
 
