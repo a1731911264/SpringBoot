@@ -58,28 +58,28 @@ public class CommonController {
 	}
 
 	@RequestMapping("/portfolio")
-	public String portfolio(Album album,Model moded,HttpSession session,HttpServletResponse response) {
+	public String portfolio() {
 		
-		// 判断用户是否登陆
-		try {
-			User user = (User) session.getAttribute("user");
-			if(user == null || StringUtils.isBlank(user.getId())){
-				throw new RuntimeException("您还没有登录，请先去登录！");
-			}
-			album.setUserId(user.getId());
-			List<Album> list =  albumService.queryAlbumList(album);	
-			if(list==null || list.size()==0){
-				moded.addAttribute("albums", null);
-			}else{
-				moded.addAttribute("albums", list);
-			}
-			moded.addAttribute("Album", album);
-		} catch(ErrorException e){
-			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
-		} catch (Exception e) {
-			ResponseUtils.sendMessage(response, false, "服务器繁忙,请稍候再试！");
-			e.printStackTrace();
-		}
+//		// 判断用户是否登陆
+//		try {
+//			User user = (User) session.getAttribute("user");
+//			if(user == null || StringUtils.isBlank(user.getId())){
+//				throw new RuntimeException("您还没有登录，请先去登录！");
+//			}
+//			album.setUserId(user.getId());
+//			List<Album> list =  albumService.queryAlbumList(album);	
+//			if(list==null || list.size()==0){
+//				moded.addAttribute("albums", null);
+//			}else{
+//				moded.addAttribute("albums", list);
+//			}
+//			moded.addAttribute("Album", album);
+//		} catch(ErrorException e){
+//			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
+//		} catch (Exception e) {
+//			ResponseUtils.sendMessage(response, false, "服务器繁忙,请稍候再试！");
+//			e.printStackTrace();
+//		}
 		
 		return "portfolio";
 	}
