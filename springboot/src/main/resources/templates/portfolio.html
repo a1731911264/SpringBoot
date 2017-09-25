@@ -93,7 +93,7 @@
 } */
 </style>
 </head>
-<body style="overflow-y: hidden">
+<body style="overflow-y: hidden" onload="reload()">
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary"
@@ -195,11 +195,11 @@
 									<input id="serch" type="text" class="form-control"
 										placeholder="请输入关键字">
 								</div>
-								<button type="submit" class="btn btn-primary">搜 索</button>
+								<button type="button" onclick="reload()" class="btn btn-primary">搜 索</button>
 							</form>
 						</div>
 						<!-- 默认封面 -->
-		<div th:unless="${albums !=null }">
+		<div  id="defaultDiv">
 							<div id="fh5co-main" style="width: 100%;height: 100%" >
 								<aside id="fh5co-hero" class="js-fullheight">
 									<div class="flexslider js-fullheight"  style="width: 100%;height: 100%" >
@@ -232,35 +232,35 @@
 					</div>
 				</nav>
 			</div>
-			<div th:if="${album}" data-spy="scroll" data-target="#navbarExample" data-offset="50"
+			<div  data-spy="scroll" data-target="#navbarExample" data-offset="50"
 				class="scrollspy-example"
 				style="margin-top: 0px auto; border: 0; padding: 0;">
 				<div class="fh5co-narrow-content"
 					style="margin-top: 0px auto; border: 0; padding: 0; height: 100%">
 					<div id="albumParentDiv" class="row row-bottom-padded-md">
-						<div class="col-md-3 col-sm-6 col-padding text-center animate-box"
-							th:each="album,albumStat:${albums}" >
-							<a href="#" class="work image-popup"
-								th:attr="style=${'background-image: url('+album.cover +')'}">
-								<div class="desc"
-									style="width: 100%; height: 100%; position: relative;">
-									<div style="position: absolute; top: 2%; left: 2%;">
-										&nbsp; <span class="glyphicon glyphicon-edit" title="编辑"
-											style="display: inline-block; font-size: 15px"
-											data-toggle="modal" data-target="#addOrEditAlbum"
-											onclick="changeText('2')"></span>&nbsp;&nbsp; <span
-											class="glyphicon glyphicon-upload" title="上传"
-											style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp;
-									</div>
-									<div style="position: absolute; top: 2%; right: 2%;">
-										<span class="glyphicon glyphicon-trash" title="删除"
-											style="display: inline-block; font-size: 15px"></span>&nbsp;
-									</div>
-									<h3 th:text="${album.albumName}">不负好时光</h3>
-									<span th:text="${album.createDate}">创建日期</span>
-								</div>
-							</a>
-						</div>
+<!-- 						<div class="col-md-3 col-sm-6 col-padding text-center animate-box" -->
+<!-- 							th:each="album,albumStat:${albums}" > -->
+<!-- 							<a href="#" class="work image-popup" -->
+<!-- 								th:attr="style=${'background-image: url('+album.cover +')'}"> -->
+<!-- 								<div class="desc" -->
+<!-- 									style="width: 100%; height: 100%; position: relative;"> -->
+<!-- 									<div style="position: absolute; top: 2%; left: 2%;"> -->
+<!-- 										&nbsp; <span class="glyphicon glyphicon-edit" title="编辑" -->
+<!-- 											style="display: inline-block; font-size: 15px" -->
+<!-- 											data-toggle="modal" data-target="#addOrEditAlbum" -->
+<!-- 											onclick="changeText('2')"></span>&nbsp;&nbsp; <span -->
+<!-- 											class="glyphicon glyphicon-upload" title="上传" -->
+<!-- 											style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp; -->
+<!-- 									</div> -->
+<!-- 									<div style="position: absolute; top: 2%; right: 2%;"> -->
+<!-- 										<span class="glyphicon glyphicon-trash" title="删除" th:onclick="'deleteAlbum(\''+${album.albumId}+'\')'" -->
+<!-- 											style="display: inline-block; font-size: 15px"></span>&nbsp; -->
+<!-- 									</div> -->
+<!-- 									<h3 th:text="${album.albumName}">不负好时光</h3> -->
+<!-- 									<span th:text="${album.createDataString}">创建日期</span> -->
+<!-- 								</div> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
 						<!-- </div> -->
 					</div>
 					<!-- 			<div class="fh5co-narrow-content"> -->
@@ -300,10 +300,32 @@
 					<div class="modal-body">您，确定要退出登录吗？</div>
 					<div class="modal-footer">
 						<a href="/user/logout" style="color: white;"><button
-								type="button" class="btn btn-success btn-sm MyBtn MyBtn2"
+								type="button" class="btn btn-primary btn-sm MyBtn MyBtn2"
 								style="font-size: 12px">退出登录</button></a>
 						<button type="button" class="btn btn-default btn-sm MyBtn MyBtn2"
 							data-dismiss="modal" style="font-size: 13px">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 删除相册div -->
+		<div class="modal fade container" id="deleteAlbumModel" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			style="position: fixed; top: 30%">
+			<div class="modal-dialog" style="width: 300px; height: 30px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h5 class="modal-title" id="myModalLabel">温馨提示：</h5>
+					</div>
+					<div class="modal-body">您，确定要删除该相册吗？</div>
+					<div class="modal-footer">
+						<a href="javascript:void(0)" id="deleteAlbumBtn" onclick="deleteAlbum()" style="color: white;"><button
+								type="button" name="" class="btn btn-primary btn-sm MyBtn MyBtn2"
+								style="font-size: 12px">删 除</button></a>
+						<button type="button" class="btn btn-default btn-sm MyBtn MyBtn2"
+							data-dismiss="modal" style="font-size: 13px">取 消</button>
 					</div>
 				</div>
 			</div>
