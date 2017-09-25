@@ -8,6 +8,24 @@ function changeText(obj) {
 	} else {
 		$("#addAndEdit").html("编辑相册：");
 		$('#addOrEditForm')[0].reset();
+		$.ajax({
+			type : "post",
+			url : "/album/deleteAlbum",
+			data : {
+				"albumId" : albumId.trim(),
+			},
+			dataType : "json",
+			success : function(data) {
+				if(data.success){
+					$('#deleteAlbumModel').modal("hide");
+					reload();
+					toastr.success("删除成功");
+				}else {
+					toastr.error(data.message);
+				}
+		
+			}
+		});
 	}
 }
 function checkInputSize(obj) {
@@ -44,8 +62,7 @@ $("#albumSave").click(function() {
 			if (data.success == true) {
 				toastr.success("保存成功(*_*)");
 				$('#addOrEditAlbum').modal('hide');
-				var val = $("#serch").val();
-				reload(val);
+				reload();
 				$btn.button('reset');
 			} else {
 				toastr.error(data.message);
@@ -57,12 +74,12 @@ $("#albumSave").click(function() {
 	$.ajax(options);
 
 });
-function reload(obj) {
+function reload() {
 	$.ajax({
 		type : "post",
 		url : "/album/reload",
 		data : {
-			"albumName" : obj.trim(),
+			"albumName" : $("#serch").val().trim(),
 		},
 		dataType : "json",
 		success : function(data) {
@@ -71,8 +88,13 @@ function reload(obj) {
 				var dataList = JSON.parse(data.message);
 //				var dataList = data.message;
 //				alert(dataList);
+				debugger;
+				if(dataList.length != 0){
+					$("#defaultDiv").hide();  
+					
 				for(var i=0;i<dataList.length;i++){
 					var album = dataList[i];
+					
 					$("#albumParentDiv").append(
 							'<div class="col-md-3 col-sm-6 col-padding text-center animate-box">'+
 								'<a href="javascript:void(0)" class="work image-popup" style="background-image: url(\''+album.cover +'\')" >'+
@@ -82,7 +104,7 @@ function reload(obj) {
 											'<span class="glyphicon glyphicon-upload" title="上传" style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp;'+
 										'</div>'+
 										'<div style="position: absolute; top: 2%; right: 2%;">'+
-											'<span class="glyphicon glyphicon-trash" title="删除" style="display: inline-block; font-size: 15px"></span>&nbsp;'+
+											'<span class="glyphicon glyphicon-trash" onclick="alertModel(\''+album.albumId+'\')"  title="删除" style="display: inline-block; font-size: 15px"></span>&nbsp;'+
 										'</div>'+
 										'<h3>'+album.albumName+'</h3>'+
 										'<span>'+album.createDate+'</span>'+
@@ -90,8 +112,16 @@ function reload(obj) {
 								'</a>'+
 							'</div>');
 				}
-				loadDiv();
-				toastr.info("加载完成");
+				
+					
+					$("#albumParentDiv").show();
+					loadDiv();
+					toastr.info("加载完成");
+				}else{
+					$("#albumParentDiv").hide();  
+					$("#defaultDiv").fadeIn(1000);
+				}
+				
 			}else {
 				toastr.error(data.message);
 			}
@@ -133,5 +163,33 @@ function loadDiv() {
 			
 		}
 
+		
 	} , { offset: '85%' } );
 };
+
+function deleteAlbum(){
+	$('#deleteAlbumModel').modal();
+	$.ajax({
+		type : "post",
+		url : "/album/deleteAlbum",
+		data : {
+			"albumId" : albumId.trim(),
+		},
+		dataType : "json",
+		success : function(data) {
+			if(data.success){
+				$('#deleteAlbumModel').modal("hide");
+				reload();
+				toastr.success("删除成功");
+			}else {
+				toastr.error(data.message);
+			}
+	
+		}
+	});
+}
+var albumId = "";
+function alertModel(obj){
+	albumId = obj;
+	$('#deleteAlbumModel').modal();
+}
