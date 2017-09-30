@@ -22,7 +22,20 @@ public class Album implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	@Column(nullable = false, unique = false)
+	private String albumTheme;
+	/**
+	 * @return the albumTheme
+	 */
+	public String getAlbumTheme() {
+		return albumTheme;
+	}
+	/**
+	 * @param albumTheme the albumTheme to set
+	 */
+	public void setAlbumTheme(String albumTheme) {
+		this.albumTheme = albumTheme;
+	}
 	/**
 	 * 主键
 	 */
@@ -91,7 +104,7 @@ public class Album implements Serializable {
 	private int imageSize;
 	// 其他权限 是否允许转载等
 	@Column(nullable = false, unique = false)
-	private int otherAuthority;
+	private String otherAuthority;
 	/**
 	 * @return the systemAuthority
 	 */
@@ -107,13 +120,13 @@ public class Album implements Serializable {
 	/**
 	 * @return the otherAuthority
 	 */
-	public int getOtherAuthority() {
+	public String getOtherAuthority() {
 		return otherAuthority;
 	}
 	/**
 	 * @param otherAuthority the otherAuthority to set
 	 */
-	public void setOtherAuthority(int otherAuthority) {
+	public void setOtherAuthority(String otherAuthority) {
 		this.otherAuthority = otherAuthority;
 	}
 	/**

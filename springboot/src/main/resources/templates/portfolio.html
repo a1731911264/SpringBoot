@@ -45,12 +45,14 @@
 <link rel="stylesheet" href="/css/menu/toastr.css">
 <link rel="stylesheet" href="/css/checkbox/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/checkbox/build.css">
+<link rel="stylesheet" href="/css/fileinput.min.css">
+<link rel="stylesheet" href="/css/fileinput-rtl.min.css" >
 
 <!-- Modernizr JS -->
 <script src="/js/modernizr-2.6.2.min.js"></script>
 <style type="text/css">
 .scrollspy-example {
-	height: 600px;
+	height: 800px;
 	overflow: auto;
 	position: relative;
 }
@@ -100,12 +102,12 @@
 			class="border js-fullheight">
 
 			<div class="dropdown">
-				<div
-					style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;"
-					class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+				<a href="javascript:void(0)" style="cursor: pointer;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+				<div style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;" >
 					<img th:attr="src=${session.user.headUrl}" width="100%"
 						height="100%" style="text-align: center;" id="imageHead" />
 				</div>
+				</a>
 				<ul class="dropdown-menu pull-right" role="menu"
 					aria-labelledby="dropdownMenu1">
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -173,21 +175,21 @@
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
 								<li><a href="javascript:void(0)" data-toggle="modal"
-									data-target="#addOrEditAlbum" onclick="changeText('1')">新建相册</a></li>
-								<li><a href="#">编辑相册</a></li>
-								<li><a href="#">删除相册</a></li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown" role="button" aria-haspopup="true"
-									aria-expanded="false">更多操作<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="#">One more separated link</a></li>
-									</ul></li>
+									data-target="#addOrEditAlbum" onclick="changeText(this.id)">新建相册</a></li>
+								<li><a href="#">批量删除</a></li>
+								<li><a href="#">回收站</a></li>
+<!-- 								<li class="dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 									data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 									aria-expanded="false">更多操作<span class="caret"></span></a> -->
+<!-- 									<ul class="dropdown-menu"> -->
+<!-- 										<li><a href="#">Action</a></li> -->
+<!-- 										<li><a href="#">Another action</a></li> -->
+<!-- 										<li><a href="#">Something else here</a></li> -->
+<!-- 										<li role="separator" class="divider"></li> -->
+<!-- 										<li><a href="#">Separated link</a></li> -->
+<!-- 										<li role="separator" class="divider"></li> -->
+<!-- 										<li><a href="#">One more separated link</a></li> -->
+<!-- 									</ul></li> -->
 							</ul>
 							<form class="navbar-form navbar-right"
 								action="/album/queryAlbumList">
@@ -199,10 +201,10 @@
 							</form>
 						</div>
 						<!-- 默认封面 -->
-		<div  id="defaultDiv">
+		<div  id="defaultDiv" style="display: none">
 							<div id="fh5co-main" style="width: 100%;height: 100%" >
 								<aside id="fh5co-hero" class="js-fullheight">
-									<div class="flexslider js-fullheight"  style="width: 100%;height: 100%" >
+									<div class="flexslider js-fullheight"  style="width: 100%;height: 100%;" >
 										<ul class="slides">
 											<li style="background-image: url(/images/photo-blank.jpg);width: 100%;height: 100%">
 												<div class="overlay"></div>
@@ -216,7 +218,7 @@
 																	      
 																</h1>
 																<p>
-																	<a class="btn btn-primary btn-demo popup-vimeo btn-lg " href="javascript:void(0)" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText('1')">
+																	<a class="btn btn-primary btn-demo popup-vimeo btn-lg " href="javascript:void(0)" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText(this.id)">
 																		<i class="icon-monitor"></i> 创建相册</a>
 																</p>
 															</div>
@@ -383,6 +385,7 @@
 					<div class="modal-body">
 						<form class="form-horizontal" method="post" id="addOrEditForm"
 							action="/album/saveOrUpdateAlbum">
+								<input id="albumId" type="hidden" name="albumId" value="" >
 							<div class="form-group">
 								<label for="username" class="col-sm-2 control-label">相册名称：</label>
 								<div class="col-sm-7">
@@ -409,22 +412,22 @@
 								<label for="password" class="col-sm-2 control-label">主题：</label>
 								<div class="col-sm-7">
 									<div class="radio radio-info radio-inline">
-										<input type="radio" value="200" name="AlbumTheme"
+										<input type="radio" value="200" name="albumTheme"
 											checked="checked"> <label for="inlineRadio1"
 											onclick="$(this).prev().prop('checked',true)">普通</label>
 									</div>
 									<div class="radio radio-info radio-inline">
-										<input type="radio" value="201" name="AlbumTheme"> <label
+										<input type="radio" value="201" name="albumTheme"> <label
 											for="inlineRadio1"
 											onclick="$(this).prev().prop('checked',true)">亲子</label>
 									</div>
 									<div class="radio radio-info radio-inline">
-										<input type="radio" value="202" name="AlbumTheme"> <label
+										<input type="radio" value="202" name="albumTheme"> <label
 											for="inlineRadio1"
 											onclick="$(this).prev().prop('checked',true)">旅游</label>
 									</div>
 									<div class="radio radio-info radio-inline">
-										<input id="alumnus" type="radio" value="203" name="AlbumTheme">
+										<input  type="radio" value="203" name="albumTheme">
 										<label for="alumnus"
 											onclick="$(this).prev().prop('checked',true)">校友</label>
 									</div>
@@ -433,7 +436,7 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">分类：</label>
 								<div class="col-sm-7">
-									<select class="form-control" name="albumClassify">
+									<select id="albumClassify" class="form-control" name="albumClassify">
 										<option value="100" selected="selected">最 爱</option>
 										<option value="101">人 物</option>
 										<option value="102">风 景</option>
@@ -448,7 +451,7 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">系统权限：</label>
 								<div class="col-sm-7">
-									<select class="form-control" name="system">
+									<select id="systemAuthority" class="form-control" name="systemAuthority">
 										<option value="300" selected="selected">所有人可见</option>
 										<option value="301">好友可见</option>
 										<option value="302">部分好友可见</option>
@@ -462,17 +465,17 @@
 								<label for="password" class="col-sm-2 control-label">其他权限：</label>
 								<div class="col-sm-7">
 
-									<div class="checkbox checkbox-info " onclick="checkBox(this)">
-										<input type="checkbox" class="styled" value="option1" checked>
-										<label for="inlineCheckbox2">允许转载</label>
+									<div class="checkbox checkbox-info " >
+										<input type="checkbox"  class="styled" value="400" checked>
+										<label for="inlineCheckbox2"  onclick="$(this).prev().prop('checked',true)">允许转载</label>
 									</div>
-									<div class="checkbox checkbox-info " onclick="checkBox(this)">
-										<input type="checkbox" class="styled" value="option1">
-										<label for="inlineCheckbox2">允许陌生人圈人</label>
+									<div class="checkbox checkbox-info " >
+										<input type="checkbox"  class="styled" value="401">
+										<label for="inlineCheckbox2" onclick="$(this).prev().prop('checked',true)">允许陌生人圈人</label>
 									</div>
-									<div class="checkbox checkbox-info " onclick="checkBox(this)">
-										<input type="checkbox" class="styled" value="option1">
-										<label for="inlineCheckbox2">对访客隐藏拍摄信息</label>
+									<div class="checkbox checkbox-info" >
+										<input type="checkbox"  class="styled" value="402">
+										<label for="inlineCheckbox2" onclick="$(this).prev().prop('checked',true)">对访客隐藏拍摄信息</label>
 									</div>
 
 								</div>
@@ -481,15 +484,37 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" data-loading-text="正在保存..." id="albumSave"
-							class="btn btn-primary btn-sm " style="font-size: 12px">保
-							存</button>
+							class="btn btn-primary btn-sm " style="font-size: 12px">保 存</button>
 						<button type="button" class="btn btn-default btn-sm "
 							data-dismiss="modal" style="font-size: 13px">取 消</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
+		<div class="modal fade" id="uploadModel" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document" style="width: 835px;height: 520px">
+            <div class="modal-content" >
+            <div id="navbarExample" class="navbar navbar-static"
+				style="margin: 0 auto; border: 0; padding: 0;">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">图片上传：</h5>
+                </div>
+                </div>
+                <div  data-spy="scroll" data-target="#uploadScroll" data-offset="10"
+				class="scrollspy-example"
+				style="margin-top: 0px auto; border: 0; padding: 0;height: 425px;overflow: auto;position: relative;">
+                <div class="modal-body" style="height: 100%" id="previewFileDiv">
+                	 
+                </div>
+                </div>
+                <div class="modal-footer" id="removePreviewDiv">
+						<input id="input-b8" name="input-b8[]" multiple type="file" dir=rtl class="file-loading">
+				</div>
+                </div>
+        </div>
+    </div>
 
 
 		<!-- jQuery -->
@@ -513,6 +538,13 @@
 		<script type="text/javascript" src="/js/head/cropbox.js"></script>
 		<script type="text/javascript" src="/js/head/head.js"></script>
 		<script type="text/javascript" src="/js/album/album.js"></script>
+		<script type="text/javascript" src="/js/sortable.min.js"></script>
+		<script type="text/javascript" src="/js/purify.min.js"></script>
+		<script type="text/javascript" src="/js/piexif.min.js"></script>
+		<script type="text/javascript" src="/js/fileinput.min.js"></script>
+		<script type="text/javascript" src="/js/zh.js"></script>
+		<script type="text/javascript" src="/js/theme.min.js"></script>
+		
 </body>
 </html>
 

@@ -13,4 +13,6 @@ public interface AlbumService {
 	public List<Album> queryAlbumList(Album album) throws Exception;
 	
 	public void deleteAlbum(String albumId) throws Exception;
+	
+	public Album getAlbum(String albumId) throws Exception;
 }

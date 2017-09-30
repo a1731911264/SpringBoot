@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-param" content="_csrf">
+<meta name="csrf-token"
+	content="UlC5VTvx0kpI21suRptUI87eXOq1bjkYfnADyP2SLqM3fdZidKCxDQ2yIkop4gRHi-xxn_lYUSEXA0q7kfEY7w==">
+<link rel="shortcut icon" href="/images/krajee-logo.ico"
+	type="image/x-icon">
+<link rel="icon" href="/images/krajee-logo.ico" type="image/x-icon">
+<title>Bootstrap File Input Demo - &copy; Kartik</title>
+<link href="/assets/prod/all-krajee.min.css?ver=201709222222"
+	rel="stylesheet">
+<link href="/assets/17b0a0f4/css/fileinput.min.css?ver=201709262249"
+	rel="stylesheet">
+<link href="/assets/17b0a0f4/css/fileinput-rtl.min.css?ver=201709262249"
+	rel="stylesheet">
+<script
+	src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+	async></script>
+<script src="https://buttons.github.io/buttons.js" async></script>
+<script type="text/javascript">
+	(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client : 'ca-pub-4718928441117602',
+		enable_page_level_ads : true
+	});
+	function closepop() {
+		$("#pop").popover("hide");
+	}
+</script>
+<script>
+	!function() {
+		var t, e = "015793334654161961524:wlcacatlyyk", c = document
+				.createElement("script");
+		c.type = "text/javascript", c.async = !0,
+				c.src = ("https:" == document.location.protocol ? "https:"
+						: "http:")
+						+ "//www.google.com/cse/cse.js?cx=" + e, t = document
+						.getElementsByTagName("script")[0], t.parentNode
+						.insertBefore(c, t)
+	}();
+</script>
+</head>
+<body onload="prettyPrint()">
+	<div id="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+			style="padding-top: 0; padding-bottom: 0">
+			<a class="navbar-brand" href="http://www.krajee.com/"
+				title="Krajee.com - Web Development Evolved"> <img alt="Krajee"
+				class="krajee-logo"
+				src="http://plugins.krajee.com/assets/prod/img/krajee-logo.png">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarToggle" aria-controls="navbarToggle"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="navbar-collapse collapse" id="navbarToggle" style="">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="/"
+						title="Home Page"><i class="fa fa-home"></i> Home</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle active" data-toggle="dropdown"
+						id="pluginsMenu" href="#" title="Krajee jQuery Plugins"
+						role="button" aria-haspopup="true" aria-expanded="false"><i
+							class="fa fa-link"></i> Plugins</a>
+						<div class="dropdown-menu" aria-labelledby="pluginsMenu">
+							<h6 class="dropdown-header">Bootstrap</h6>
+							<a class="dropdown-item active" href="/file-input"
+								title="Krajee Bootstrap File Input Plugin"><i
+								class="fa fa-folder-open"></i> File Input</a> <a
+								class="dropdown-item" href="/star-rating"
+								title="Krajee Bootstrap Star Rating Plugin"><i
+								class="fa fa-star"></i> Star Rating</a> <a class="dropdown-item"
+								href="/tabs-x" title="Krajee Bootstrap Tabs Extended Plugin"><i
+								class="fa fa-folder-o"></i> Tabs X</a> <a class="dropdown-item"
+								href="/popover-x"
+								title="Krajee Bootstrap Popover Extended Plugin"><i
+								class="fa fa-comment"></i> Popover X</a> <a class="dropdown-item"
+								href="/checkbox-x"
+								title="Krajee Bootstrap Checkbox Extended Plugin"><i
+								class="fa fa-check-square-o"></i> Checkbox X</a>
+							<hr class="my-1">
+							<h6 class="dropdown-header">Other</h6>
+							<a class="dropdown-item" href="/dependent-dropdown"
+								title="Krajee Dependent Dropdown Plugin"><i
+								class="fa fa-list"></i> Dependent Dropdown</a> <a
+								class="dropdown-item" href="/strength-meter"
+								title="Krajee Strength Meter Plugin"><i class="fa fa-lock"></i>
+								Strength Meter</a> <a class="dropdown-item"
+								href="/php-date-formatter"
+								title="Krajee PHP Date Formatter Library"><i
+								class="fa fa-calendar"></i> PHP Date Formatter</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" data-toggle="dropdown"
+						id="resourcesMenu" href="#" title="Other Krajee Resources"
+						role="button" aria-haspopup="true" aria-expanded="false"><i
+							class="fa fa-certificate"></i> Resources</a>
+						<div class="dropdown-menu" aria-labelledby="resourcesMenu">
+							<a class="dropdown-item" href="http://demos.krajee.com"
+								title="Krajee Yii2 Extensions & Demos"><i class="fa fa-play"></i>
+								Yii Demos</a> <a class="dropdown-item"
+								href="http://webtips.krajee.com"
+								title="Krajee Web Tips & Resources"><i class="fa fa-fire"></i>
+								Web Tips</a> <a class="dropdown-item"
+								href="http://kartikv.krajee.com"
+								title="Weblog of Kartik Visweswaran"><i class="fa fa-edit"></i>
+								Kartik's Weblog</a>
+						</div></li>
+				</ul>
+				<form class="form-inline kv-navbar-form" id="kv-gs-form"
+					role="search">
+					<div class="input-group">
+						<input id="kv-gs-query" type="text" class="form-control"
+							placeholder="Search Krajee Plugins ..." autocomplete="off">
+						<span class="input-group-btn" title="Submit"><button
+								type="submit" class="btn btn-outline-info">
+								<i class="fa fa-search"></i>
+							</button></span>
+					</div>
+					<div style="display: flex; flex-direction: column; margin: 5px">
+						<img
+							src="//www.google.com/images/poweredby_transparent/poweredby_000000.gif"
+							alt="Google"> <span class="text-white"
+							style="font-size: 8px">Custom Search</span>
+					</div>
+					<div onclick="window.location.hash='#comments'"
+						title="Comments for this page" class="btn btn-link text-info"
+						style="cursor: pointer; padding: 5px 2px 5px 5px">
+						<span class="icon-animated-vertical"><i
+							class="fa fa-lg fa-comments"></i></span> <a class="badge badge-info"
+							href="http://plugins.krajee.com/file-basic-usage-demo#disqus_thread">&hellip;</a>
+					</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+	<div id="wrapper" class="opened">
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper" class="kv-scroll">
+			<ul id="sidebar" class="nav sidebar-nav flex-column flex-nowrap">
+				<li class="sidebar-brand"><a class="nav-link" id="menu-toggle"
+					href="#" title="Contents: Bootstrap File Input Demo"> <span
+						class="main-icon"><i class="fa fa-bars"></i></span>bootstrap-fileinput
+				</a></li>
+				<li><a class="navigate nav-link" href="#top"
+					title="Top of page"><span class="sub-icon"><i
+							class="fa fa-arrow-circle-up"></i></span> &mdash; Top &mdash;</a></li>
+				<li><a class="nav-link" href="#basic-example-1"
+					title="Basic Example 1"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 1</a></li>
+				<li><a class="nav-link" href="#basic-example-2"
+					title="Basic Example 2"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 2</a></li>
+				<li><a class="nav-link" href="#basic-example-3"
+					title="Basic Example 3"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 3 <span
+						class="badge badge-success" title="New features available"><span
+							style="margin-left: -20px">NEW</span></span></a></li>
+				<li><a class="nav-link" href="#basic-example-4"
+					title="Basic Example 4"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 4</a></li>
+				<li><a class="nav-link" href="#basic-example-5"
+					title="Basic Example 5"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 5</a></li>
+				<li><a class="nav-link" href="#basic-example-6"
+					title="Basic Example 6"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 6</a></li>
+				<li><a class="nav-link" href="#basic-example-7"
+					title="Basic Example 7"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 7</a></li>
+				<li><a class="nav-link" href="#basic-example-8"
+					title="Basic Example 8"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 8 <span
+						class="badge badge-success" title="New features available"><span
+							style="margin-left: -20px">NEW</span></span></a></li>
+				<li><a class="nav-link" href="#basic-example-9"
+					title="Basic Example 9"><span class="sub-icon"><i
+							class="fa fa-play-circle-o"></i></span> Basic Example 9 <span
+						class="badge badge-success" title="New features available"><span
+							style="margin-left: -20px">NEW</span></span></a></li>
+				<li><a class="nav-link" href="#comments"
+					title="Comments & Discussion"><span class="sub-icon"><i
+							class="fa fa-comment"></i></span> Comments & Discussion</a></li>
+				<li><a class="navigate nav-link" href="#bottom"
+					title="Bottom of page"><span class="sub-icon"><i
+							class="fa fa-arrow-circle-down"></i></span> &mdash; Bottom &mdash;</a></li>
+				<li><div class="kv-sidenav-ad">
+						<div id="w12" style="margin-left: -5px;"></div>
+					</div></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div id="page-content-inner" class="container-fluid">
+				<div id="top" class="kv-title-box">
+					<div class="row">
+						<div class="col-lg-7 kv-title-text">
+							<h2 class="kv-main-title">
+								<span class="fa fa-folder-open"></span> Bootstrap File Input
+								Demo
+							</h2>
+						</div>
+						<div class="col-lg-5 kv-title-pills">
+							<ul class="nav nav-pills">
+								<li class="nav-item"><a class="nav-link text-danger"
+									href="http://webtips.krajee.com/tag/bootstrap-fileinput"
+									title="bootstrap-fileinput web tips"><span
+										class="fa fa-bell-o kv-animated-bell"></span> Tips</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="http://github.com/kartik-v/bootstrap-fileinput"
+									title="bootstrap-fileinput github repository"><span
+										class="fa fa-cloud"></span> Source</a></li>
+								<li class="nav-item"><a class="nav-link" href="/file-input"
+									title="bootstrap-fileinput documentation"><span
+										class="fa fa-book"></span> Docs</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/file-input/demo#basic-usage"
+									title="bootstrap-fileinput demonstration"><span
+										class="fa fa-play"></span> Demo</a></li>
+								<li class="nav-item"><a class="nav-link active"
+									href="/file-basic-usage-demo" title="Basic Usage"><span
+										class="fa fa-play"></span> Basic Us&hellip;</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="kv-crumb-bar">
+					<div class="row">
+						<div class="col-lg-5 kv-crumbs">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item"><a href="/file-input">Bootstrap
+										File Input</a></li>
+								<li class="breadcrumb-item"><a
+									href="/file-input/demo#basic-usage">Demos</a></li>
+								<li class="breadcrumb-item active">Basic Usage</li>
+							</ol>
+						</div>
+						<div class="col-lg-7 kv-buttons">
+							<a class="github-button"
+								href="https://github.com/kartik-v/bootstrap-fileinput/subscription"
+								title="Watch" data-show-count="true"
+								aria-label="Watch kartik-v/bootstrap-fileinput on GitHub">Watch</a>
+							<a class="github-button"
+								href="https://github.com/kartik-v/bootstrap-fileinput"
+								data-show-count="true" title="aria-label=" Star
+								kartik-v/bootstrap-fileinput onGitHub">Star</a> <a
+								class="github-button"
+								href="https://github.com/kartik-v/bootstrap-fileinput/fork"
+								data-show-count="true"
+								aria-label="Fork kartik-v/bootstrap-fileinput on GitHub">Fork</a>
+							<a class="github-button"
+								href="https://github.com/kartik-v/bootstrap-fileinput/issues"
+								data-show-count="true"
+								aria-label="Issue kartik-v/bootstrap-fileinput on GitHub">Issue</a>
+							<a class="github-button" href="https://github.com/kartik-v"
+								data-show-count="true" aria-label="Follow @kartik-v on GitHub">@kartik-v</a>
+						</div>
+					</div>
+				</div>
+				<div class="adblock-msg alert alert-danger" style="display: none;">
+					<button class="close text-right pull-right float-right">&times;</button>
+					<div style="float: left; font-size: 18px; margin-right: 20px">
+						<i class="fa fa-exclamation-triangle fa-4x"></i>
+					</div>
+					<h4>Oops!</h4>
+					Your browser seems to have an ad-blocking plugin enabled. It is
+					recommended if you can add this domain to your adblocker's
+					whitelist to enable a seamless viewing experience of the jQuery
+					plugin demos on this site. If you still feel that you find specific
+					content intrusive or inappropriate, please <a
+						href="mailto:feedback@krajee.com" class="btn btn-sm btn-danger"><i
+						class="glyphicon glyphicon-envelope"></i> mail us</a>
+				</div>
+				<div class="my-2">
+					<table class="kv-paypal-table" style="margin: auto">
+						<tr class="text-warning small">
+							<td>Thankful to Krajee!</td>
+							<td>
+								<form action="https://www.paypal.com/cgi-bin/webscr"
+									method="post" target="_top" style="margin: 0; padding: 0">
+									<input type="hidden" name="cmd" value="_s-xclick"> <input
+										type="hidden" name="hosted_button_id" value="EUGR9JMMXUB96">
+									<input type="image"
+										src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+										border="0" name="submit" alt="Donate to Krajee using PayPal">
+									<img alt="" border="0"
+										src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+										width="1" height="1">
+								</form>
+							</td>
+							<td>to get more out of us.</td>
+							<td><button id="pop" type="button"
+									class="btn btn-xs btn-info kv-paypal"
+									title="    <b>Why donate?</b>
+    <button type='button' class='close' onclick='closepop()' style='margin-top:-5px'>&times;</button>"
+									data-html="true" data-animation="true" data-container="body"
+									data-toggle="popover" data-placement="right"
+									data-content="<div class='small text-justify'><p>We strive hard in creating high quality JQuery plugins for the community as <b>free</b> open source code, and maintaining this demonstration site.</p><p>
+Any donation would help us maintain our resources better and help improve our plugins or create new ones.</p><p>Even, if it does not fulfil our 
+resource needs, it will still be a nice way to thank us and buy us a <i class='fa fa-coffee'></i>. <p>We accept donations through 
+<a href='http://www.paypal.com' target='_blank'>PayPal</a>. You can also <a href='http://krajee.com/contact/'>send us your details</a> for us to acknowledge your 
+contribution.</p></div>">
+									<i class="fa fa-info-circle"></i> Learn
+								</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="text-center" style="overflow: hidden">
+
+					<!-- Leaderboard -->
+					<ins class="adsbygoogle"
+						style="display: inline-block; width: 728px; height: 90px"
+						data-ad-client="ca-pub-4718928441117602" data-ad-slot="4893266174">
+					</ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>
+				<div class="text-justify">
+					<p class="lead">
+						Basic usage examples of the <b>bootstrap-fileinput</b> plugin.
+					</p>
+					<div class="bs-callout bs-callout-warning">
+						<h4>Tip</h4>
+						<p>
+							Not seeing the updated content on this page! Hard refresh your
+							browser to clean cache for this page (e.g.
+							<kbd>SHIFT-F5</kbd>
+							on Windows Chrome)
+						</p>
+					</div>
+				</div>
+				<div class="text-center">
+					<div style="padding: 4px">
+						<!-- Horizontal Medium Link -->
+						<ins class="adsbygoogle"
+							style="display: inline-block; width: 468px; height: 15px"
+							data-ad-client="ca-pub-4718928441117602"
+							data-ad-slot="4827070579"> </ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+				<div class="mx-auto" style="width: 340px; height: 300px">
+					<div class="kv-ad-large">
+						<!-- Large Rectangle -->
+						<ins class="adsbygoogle"
+							style="display: inline-block; width: 336px; height: 280px"
+							data-ad-client="ca-pub-4718928441117602"
+							data-ad-slot="5811596173"> </ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-1" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-1"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 1 <small></small>
+
+						</h1>
+					</div>
+					Automatically convert a file input to a bootstrap file input widget
+					by setting its class as
+					<code>file</code>
+					.
+					<div class="bs-example">
+						<div>
+							<input id="input-b1" name="input-b1" type="file" class="file">
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;input id=&quot;input-b1&quot; name=&quot;input-b1&quot; type=&quot;file&quot; class=&quot;file&quot;&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-2" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-2"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 2 <small></small>
+
+						</h1>
+					</div>
+					Hide file preview thumbnails.
+					<div class="bs-example">
+						<div>
+							<input id="input-b2" name="input-b2" type="file" class="file"
+								data-show-preview="false">
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;input id=&quot;input-b2&quot; name=&quot;input-b2&quot; type=&quot;file&quot; class=&quot;file&quot; data-show-preview=&quot;false&quot;&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-3" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-3"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 3 <small></small>
+
+						</h1>
+					</div>
+					<p>Use file input attributes (e.g. multiple upload) for setting
+						input behavior and data attributes to control plugin options. For
+						example, hide/show display of upload button and caption. Note that
+						for multiple inputs, your server code must receive an array of
+						file objects (e.g. for PHP server code, you must use the array
+						naming convention for your input).</p>
+					<p>
+						This example also shows how you can control the placeholder text
+						initially shown by setting the
+						<samp>
+							<a href="#option-msgplaceholder">msgPlaceholder</a>
+						</samp>
+						property.
+					</p>
+					<div class="bs-example">
+						<div>
+							<input id="input-b3" name="input-b3[]" type="file" class="file"
+								multiple data-show-upload="false" data-show-caption="true"
+								data-msg-placeholder="Select {files} for upload...">
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;input id=&quot;input-b3&quot; name=&quot;input-b3[]&quot; type=&quot;file&quot; class=&quot;file&quot; multiple 
+    data-show-upload=&quot;false&quot; data-show-caption=&quot;true&quot; data-msg-placeholder=&quot;Select {files} for upload...&quot;&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-4" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-4"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 4 <small></small>
+
+						</h1>
+					</div>
+					Set the file input widget to be readonly or disabled.
+					<div class="bs-example">
+						<div>
+							<label for="input-b4a">Readonly Input</label> <input
+								id="input-b4a" name="input-b4a" type="file" class="file"
+								readonly="true"> <br> <label for="input-b4b">Disabled
+								Input</label> <input id="input-b4b" name="input-b4b" type="file"
+								class="file" disabled="true">
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;label for=&quot;input-b4a&quot;&gt;Readonly Input&lt;/label&gt;
+&lt;input id=&quot;input-b4a&quot; name=&quot;input-b4a&quot; type=&quot;file&quot; class=&quot;file&quot; readonly=&quot;true&quot;&gt;
+&lt;br&gt;
+&lt;label for=&quot;input-b4b&quot;&gt;Disabled Input&lt;/label&gt;
+&lt;input id=&quot;input-b4b&quot; name=&quot;input-b4b&quot; type=&quot;file&quot; class=&quot;file&quot; disabled=&quot;true&quot;&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-5" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-5"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 5 <small></small>
+
+						</h1>
+					</div>
+					Initialize file input widget via javascript. Hide the caption and
+					display widget with only buttons. You can envelop the input within
+					a container with the
+					<code>file-loading</code>
+					class to show a spinning indicator, while the plugin loads.
+					<div class="bs-example">
+						<div>
+							<label class="control-label">Select File</label> <input
+								id="input-b5" name="input-b5[]" type="file" multiple>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;label class=&quot;control-label&quot;&gt;Select File&lt;/label&gt;
+&lt;input id=&quot;input-b5&quot; name=&quot;input-b5[]&quot; type=&quot;file&quot; multiple&gt;
+&lt;script&gt;
+$(document).on(&#039;ready&#039;, function() {
+    $(&quot;#input-b5&quot;).fileinput({showCaption: false});
+});
+&lt;/script&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-6" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-6"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 6 <small></small>
+
+						</h1>
+					</div>
+					Change size of whole widget (e.g. bootstrap input group styling)
+					and set max files count allowed to 10.
+					<div class="bs-example">
+						<div>
+							<div class="file-loading">
+								<input id="input-b6" name="input-b6[]" type="file" multiple>
+							</div>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;div class=&quot;file-loading&quot;&gt; 
+    &lt;input id=&quot;input-b6&quot; name=&quot;input-b6[]&quot; type=&quot;file&quot; multiple&gt;
+&lt;/div&gt;
+&lt;script&gt;
+$(document).on(&#039;ready&#039;, function() {
+    $(&quot;#input-b6&quot;).fileinput({
+        showUpload: false,
+        maxFileCount: 10,
+        mainClass: &quot;input-group-lg&quot;
+    });
+});
+&lt;/script&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-7" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-7"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 7 <small></small>
+
+						</h1>
+					</div>
+					Using data attributes to configure the entire widget. This example
+					shows how you can pass json within data attributes in the HTML
+					markup (check
+					<code>data-allowed-file-extensions</code>
+					which basically sets the plugin property
+					<code>allowedFileExtensions</code>
+					)
+					<div class="bs-example">
+						<div>
+							<div class="file-loading">
+								<input id="input-b7" name="input-b7[]" multiple type="file"
+									class="file" data-allowed-file-extensions='["csv", "txt"]'>
+							</div>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;div class=&quot;file-loading&quot;&gt;
+    &lt;input id=&quot;input-b7&quot; name=&quot;input-b7[]&quot; multiple type=&quot;file&quot; class=&quot;file&quot; data-allowed-file-extensions=&#039;[&quot;csv&quot;, &quot;txt&quot;]&#039;&gt;
+&lt;/div&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-8" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-8"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 8 <small></small>
+
+						</h1>
+					</div>
+					<p>
+						An example of configuring the plugin to work in Right-To-Left
+						(RTL) mode and orientation. You need to set the <a
+							href="http://plugins.krajee.com/file-input#option-rtl"><samp>rtl</samp></a>
+						property of the plugin to enable this mode and also load the
+						<code>css/fileinput-rtl.css</code>
+						file after the
+						<code>css/fileinput.css</code>
+						on your page for RTL styling. The plugin for this example is
+						initialized via javascript (note that you must remove the CSS
+						class
+						<code>file</code>
+						from your input when doing this).
+					</p>
+					<p>
+						If you wish to show the loading indicator while plugin loads, then
+						envelop the file input markup inside a container with
+						<code>file-loading</code>
+						CSS class and
+						<code>dir</code>
+						set as
+						<code>rtl</code>
+						.
+					</p>
+					<p>
+						<span class="badge badge-info">NOTE:</span> You must load the
+						<code>css/fileinput-rtl.css</code>
+						file after the
+						<code>css/fileinput.css</code>
+						on your page for RTL styling.
+					</p>
+					<div class="bs-example">
+						<div>
+							<div dir=rtl class="file-loading">
+								<!-- note the direction if you want to display file-loading indicator -->
+								<!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code -->
+								<input id="input-b8" name="input-b8[]" multiple type="file"'>
+							</div>
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;link href=&quot;/path/to/css//css/fileinput.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;/path/to/css//css/fileinput-rtl.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;div dir=rtl class=&quot;file-loading&quot;&gt; &lt;!-- note the direction if you want to display file-loading indicator --&gt;
+    &lt;!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code --&gt;
+    &lt;input id=&quot;input-b8&quot; name=&quot;input-b8[]&quot; multiple type=&quot;file&quot;&#039;&gt;
+&lt;/div&gt;
+&lt;script&gt;
+$(document).on(&#039;ready&#039;, function() {
+    $(&quot;#input-b8&quot;).fileinput({
+        rtl: true,
+        allowedFileExtensions: [&quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;]
+    });
+});
+&lt;/script&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div class="page-header bs-header">
+						<h1 id="basic-example-9" class="display-4">
+							<a class="kv-anchor" title="Permalink" href="#basic-example-9"
+								data-toggle="tooltip"><span class="fa fa-link"></span></a> Basic
+							Example 9 <small></small>
+
+						</h1>
+					</div>
+					<p>
+						An example of rendering the file input widget inside a bootstrap
+						modal with
+						<code>showPreview</code>
+						and
+						<code>showUpload</code>
+						set to
+						<code>false</code>
+						. The example also shows how you can render the errors (without a
+						preview) in a custom error container by setting the
+						<code>elErrorContainer</code>
+						property.
+					</p>
+					<div class="bs-example">
+						<div>
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#exampleModal">Launch Modal</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Modal
+												title</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<div class="file-loading">
+												<input id="input-b9" name="input-b9[]" multiple type="file"'>
+											</div>
+											<div id="kartik-file-errors"></div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary"
+												title="Your custom upload logic">Save</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<pre class="prettyprint linenums">&lt;!-- Button trigger modal --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;modal&quot; data-target=&quot;#exampleModal&quot;&gt;
+  Launch Modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;exampleModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;exampleModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+  &lt;div class=&quot;modal-dialog modal-lg&quot; role=&quot;document&quot;&gt;
+    &lt;div class=&quot;modal-content&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;h5 class=&quot;modal-title&quot; id=&quot;exampleModalLabel&quot;&gt;Modal title&lt;/h5&gt;
+        &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;
+          &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;div class=&quot;file-loading&quot;&gt;
+          &lt;input id=&quot;input-b9&quot; name=&quot;input-b9[]&quot; multiple type=&quot;file&quot;&#039;&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;kartik-file-errors&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; title=&quot;Your custom upload logic&quot;&gt;Save&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;
+$(document).on(&#039;ready&#039;, function() {
+    $(&quot;#input-b9&quot;).fileinput({
+        showPreview: false,
+        showUpload: false,
+        elErrorContainer: &#039;#kartik-file-errors&#039;,
+        allowedFileExtensions: [&quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;]
+        //uploadUrl: &#039;/site/file-upload-single&#039;
+    });
+});
+&lt;/script&gt;</pre>
+				</div>
+				<div class="bs-section">
+					<div id="comments">
+						<div class="page-header bs-header">
+							<h1 id="comments-heading" class="display-4">
+								<a class="kv-anchor" title="" href="#comments"
+									data-toggle="tooltip" data-original-title="Permalink"> <span
+									class="fa fa-link"></span></a> Comments & Discussion
+							</h1>
+						</div>
+						<div class="bs-callout bs-callout-info">
+							<h4>
+								<i class="fa fa-exclamation-circle"></i> Note
+							</h4>
+							<p>
+								You can now visit the <a
+									href="http://webtips.krajee.com/questions">Krajee Webtips Q
+									& A forum</a> for searching OR asking questions OR helping
+								programmers with answers on these extensions and plugins. For
+								asking a question <a
+									href="http://webtips.krajee.com/ask-question">click here</a>.
+								Select the appropriate <b>question category</b> (i.e. <i>Krajee
+									Plugins</i>) and choose this current page plugin in the <b>question
+									related to</b> field.
+							</p>
+							<p>
+								<small>The comments and discussion section below are
+									intended for generic discussions or feedback for this plugin.
+									Developers may not be able to search or lookup here specific
+									questions or tips on usage for this plugin. </small>
+							</p>
+						</div>
+						<div class="clearfix">&nbsp;</div>
+						<div class="page-comments">
+							<div id="disqus_thread"></div>
+							<!--[if (gt IE 8)]><!-->
+							<script type="text/javascript">
+								var disqus_url = 'http://plugins.krajee.com/file-basic-usage-demo';
+								var disqus_shortname = 'krajee';
+								(function() {
+									var dsq = document.createElement('script');
+									dsq.type = 'text/javascript';
+									dsq.async = true;
+									dsq.src = '//' + disqus_shortname
+											+ '.disqus.com/embed.js';
+									(document.getElementsByTagName('head')[0] || document
+											.getElementsByTagName('body')[0])
+											.appendChild(dsq);
+								})();
+							</script>
+							<!--<![endif]-->
+
+							<!--[if (lt IE 9)]>
+        <div class="alert alert-warning"><strong>Note:</strong> Please use an updated browser to view comments.</div>
+    <![endif]-->
+							<noscript>
+								<div class="alert alert-danger">Please enable JavaScript
+									to view the .</div>
+							</noscript>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- stat counter -->
+			<script type="text/javascript">
+				document
+						.write('<div class="text-center"><span class="badge badge-secondary">');
+				var sc_project = 11350018;
+				var sc_invisible = 0;
+				var sc_security = "d7391d0a";
+				var sc_text = 2;
+				var scJsHost = (("https:" == document.location.protocol) ? "https://secure."
+						: "http://www.");
+				document
+						.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>");
+				document
+						.write(' visitors to Krajee JQuery Plugins since 22-May-2017</span></div>');
+			</script>
+			<!-- Footer -->
+			<footer class="footer">
+				<div id="bottom" class="kv-container">
+					<div class="footer-right">
+						&copy; Kartik Visweswaran 2017 <small><br>Powered by
+							<a href="http://www.yiiframework.com/" rel="external">Yii
+								Framework</a> | <a href="/site/privacy">Privacy Policy</a></small>
+					</div>
+					<div class="footer-left">
+						<div id="w14" class="kv-social-bar">
+							<a class="text-primary-o"
+								href="http://facebook.com/pages/Krajee-Solutions/649011818520161"
+								title="Join us on Facebook"><i class='fa fa-3x kv-fb-square'></i></a>
+							<a class="text-info-o" href="http://twitter.com/KrajeeSolutions"
+								title="Join us on Twitter"><i class='fa fa-3x kv-tw-square'></i></a>
+							<a class="text-danger" href="http://google.com/+KrajeeSolutions"
+								title="Join us on Google+"><i class='fa fa-3x kv-gp-square'></i></a>
+							<a class="text-primary-o"
+								href="http://in.linkedin.com/in/KrajeeSolutions"
+								title="Join us on LinkedIn"><i class='fa fa-3x kv-in-square'></i></a>
+							<a class="text-secondary" href="http://github.com/kartik-v"
+								title="Join us on GitHub"><i class='fa fa-3x kv-gh-square'></i></a>
+							<a class="btn btn-primary-o btn-vk"
+								href="http://vk.com/KrajeeSolutions"
+								title="Join us on VKontakte"><i class='fa fa-vk'></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!--[if (gt IE 8)]><!-->
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+				var disqus_url = 'http://plugins.krajee.com/file-basic-usage-demo';
+				var disqus_shortname = 'krajee';
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+					var s = document.createElement('script');
+					s.async = true;
+					s.type = 'text/javascript';
+					s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+					(document.getElementsByTagName('HEAD')[0] || document
+							.getElementsByTagName('BODY')[0]).appendChild(s);
+				}());
+			</script>
+			<!--<![endif]-->
+			<noscript>
+				<div class="alert alert-danger">
+					Please enable JavaScript to view the <a
+						href="http://disqus.com/?ref_noscript">comments powered by
+						Disqus</a>.
+				</div>
+			</noscript>
+			<script>
+				(function(i, s, o, g, r, a, m) {
+					i['GoogleAnalyticsObject'] = r;
+					i[r] = i[r] || function() {
+						(i[r].q = i[r].q || []).push(arguments)
+					}, i[r].l = 1 * new Date();
+					a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+					a.async = 1;
+					a.src = g;
+					m.parentNode.insertBefore(a, m)
+				})(window, document, 'script',
+						'//www.google-analytics.com/analytics.js',
+						'__gaTracker');
+
+				__gaTracker('create', 'UA-52095950-1', 'krajee.com');
+				__gaTracker('send', 'pageview');
+			</script>
+			<noscript>
+				<div class="alert alert-danger">You must enable Javascript on
+					your browser for the site to work optimally and display sections
+					completely.</div>
+			</noscript>
+		</div>
+		<!-- /#page-content-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+	<div id="kv-gs-results-cont" class="modal fade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">
+						<i class="fa fa-search"></i> Search Results:
+						<samp class="text-info"></samp>
+					</h3>
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<gcse:searchresults-only>
+						<div class="kv-loading-big mx-auto align-middle"
+							style="height: 200px; width: 200px"></div>
+					</gcse:searchresults-only>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<style>
+#kv-gs-query {
+	border-color: #fff
+}
+
+#kv-gs-query:focus {
+	border-color: #80bdff
+}
+
+.gsc-control-cse {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif
+}
+
+.gsc-adBlock {
+	margin: 0 0 0 -5px
+}
+
+.gsc-above-wrapper-area, .gsc-thumbnail-inside, .gsc-url-top {
+	padding: 0
+}
+
+.gs-result .gs-title, .gs-result .gs-title * {
+	color: #007bff;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects
+}
+
+.gs-result .gs-title :hover, .gs-result .gs-title:hover {
+	color: #0056b3;
+	text-decoration: underline
+}
+
+.gsc-result .gs-title {
+	height: 1.4em
+}
+
+.gsc-result-info {
+	padding-left: 0
+}
+
+.gsc-results .gsc-cursor-box {
+	margin: 5px 0 0
+}
+
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+	display: block;
+	padding: .5rem .75rem;
+	margin: 0 0 0 -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	float: left
+}
+
+.gsc-results .gsc-cursor-box .gsc-cursor-page:focus, .gsc-results .gsc-cursor-box .gsc-cursor-page:hover
+	{
+	color: #0056b3;
+	text-decoration: none;
+	background-color: #e9ecef;
+	border-color: #ddd
+}
+
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff
+}
+
+.gsc-cursor-page:first-child {
+	margin-left: 0;
+	border: 1px solid #ddd;
+	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem
+}
+
+.gsc-cursor-page:last-child {
+	border-bottom-right-radius: .25rem;
+	border-top-right-radius: .25rem
+}
+
+.gs-error-result .gs-snippet, .gs-no-results-result .gs-snippet {
+	margin: 0;
+	padding: 15px 20px;
+	border-radius: .25rem;
+	color: #856404;
+	background-color: #fff3cd;
+	border-color: #ffeeba
+}
+
+.gsc-selected-option-container {
+	border-radius: .25rem
+}
+</style>
+	<script src="/assets/17b0a0f4/js/plugins/purify.min.js"></script>
+	<script src="/assets/prod/all-krajee.min.js?ver=201709222222"></script>
+	<script src="/assets/17b0a0f4/js/plugins/sortable.min.js"></script>
+	<script src="/assets/17b0a0f4/js/fileinput.min.js?ver=201709262249"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$("#input-b5").fileinput({
+				showCaption : false
+			});
+			$("#input-b6").fileinput({
+				showUpload : false,
+				maxFileCount : 10,
+				mainClass : "input-group-lg"
+			});
+			$("#input-b8").fileinput({
+				rtl : true,
+				allowedFileExtensions : [ "jpg", "png", "gif" ]
+			});
+			$("#input-b9").fileinput({
+				showPreview : false,
+				showUpload : false,
+				elErrorContainer : '#kartik-file-errors',
+				allowedFileExtensions : [ "jpg", "png", "gif" ]
+			//uploadUrl: '/site/file-upload-single'
+			});
+			$('a.navigate').on(
+					'click',
+					function(e) {
+						var hash = this.hash, h = hash == '#top' ? 0
+								: $('body').height();
+						$('body,html').animate({
+							scrollTop : h
+						}, 800);
+					});
+			$(function() {
+				$("[data-toggle=\'tooltip\']").tooltip();
+			});
+			$('body')
+					.on(
+							'click',
+							function(e) {
+								//did not click a popover toggle or popover
+								if ($(e.target).data('toggle') !== 'popover'
+										&& $(e.target).parents('.popover.in').length === 0) {
+									$('[data-toggle="popover"]')
+											.popover('hide');
+								}
+							});
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("opened");
+			});
+			var initSideMenu = function() {
+				var width = (window.innerWidth > 0) ? window.innerWidth
+						: screen.width;
+				$('#wrapper').removeClass('opened');
+				if (width > 767) {
+					$('#wrapper').addClass('opened');
+				}
+			};
+			$(window).on('resize', function() {
+				initSideMenu();
+				var $tip = $('.kv-animated-bell');
+				if ($tip.length) {
+					$tip.removeClass('kv-animated-bell');
+					setTimeout(function() {
+						$tip.addClass('kv-animated-bell');
+					}, 200);
+				}
+			});
+			initSideMenu();
+			$('body').scrollspy({
+				target : $('#sidebar-wrapper'),
+				offset : 80
+			});
+			$('.sidebar-brand .nav-link').on('click', function(e) {
+				e.preventDefault();
+				$(this).removeClass('active');
+			});
+			$(".kv-scroll").each(function() {
+				$(this).perfectScrollbar();
+			});
+			loadAdversal('w12', '3808879', '300x1050', '300', '1050',
+					'300x600,160x600,120x600,300x250,250x250,200x200,180x150');
+			setTimeout(function() {
+				if ($.trim($('.adsbygoogle').html()).length < 10) {
+					$('.adblock-msg').slideDown('slow');
+				}
+			}, 1000);
+			$('.adblock-msg .close').on('click', function(e) {
+				$('.adblock-msg').slideUp('slow');
+			});
+		});
+	</script>
+</body>
+</html>

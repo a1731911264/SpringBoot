@@ -1,8 +1,14 @@
 $('body').scrollspy({
 	target : '#navbar-example'
 });
+$(function (){
+	$('#uploadModel').on('hide.bs.modal', function () {
+		$("#removeImage").click();
+	 });
+})
 function changeText(obj) {
-	if (obj == '1') {
+	debugger;
+	if (obj == '' || obj == undefined || obj== null) {
 		$("#addAndEdit").html("新建相册：");
 		$('#addOrEditForm')[0].reset();
 	} else {
@@ -10,16 +16,30 @@ function changeText(obj) {
 		$('#addOrEditForm')[0].reset();
 		$.ajax({
 			type : "post",
-			url : "/album/deleteAlbum",
+			url : "/album/getAlbum",
 			data : {
-				"albumId" : albumId.trim(),
+				"albumId" : obj.trim(),
 			},
 			dataType : "json",
 			success : function(data) {
 				if(data.success){
-					$('#deleteAlbumModel').modal("hide");
-					reload();
-					toastr.success("删除成功");
+					var album = data.message;
+					$("#albumId").val(album.albumId);
+					$("#albumName").val(album.albumName);
+					$("#albumDesc").val(album.albumDesc);
+					$("#albumClassify").val(album.albumClassify);
+					$("#systemAuthority").val(album.systemAuthority);
+					$("#addOrEditForm input[type='radio'][name='albumTheme'][value='"+album.albumTheme+"']").prop("checked",true);
+					$("#addOrEditForm input[type='checkbox']").each(function(index,element){
+						$(element).prop("checked",false);
+						var pageValue = $(element).val();
+						var otherAuthoritys = album.otherAuthority.split(",");
+						for(var i=0;i<otherAuthoritys.length;i++){
+							if(pageValue == otherAuthoritys[i] ){
+								$(element).prop("checked",true);
+							}
+						}
+					 });
 				}else {
 					toastr.error(data.message);
 				}
@@ -40,23 +60,25 @@ function checkInputSize(obj) {
 
 	}
 }
-function checkBox(obj) {
-	var state = $(obj).children(':first').prop('checked');
-	if (state) {
-		$(obj).children(':first').prop('checked', false);
-	} else {
-		$(obj).children(':first').prop('checked', true);
-	}
-}
 $("#albumSave").click(function() {
 
 	var $btn = $("#albumSave").button('loading');
-
+	var otherAuthority = "";
+	$("#addOrEditForm input[type='checkbox']:checked").each(function(index,element){
+		if(index == ($("#addOrEditForm input[type='checkbox']:checked").length -1) ){
+			otherAuthority+=$(element).val();
+		}else{
+			otherAuthority+=$(element).val()+",";
+		}
+		
+	 });
+	var jsonObj = $("#addOrEditForm").serialize();
+	jsonObj = jsonObj +"&otherAuthority="+otherAuthority;
 	var options = {
 		url : '/album/saveOrUpdateAlbum',
 		type : 'post',
 		dataType : 'json',
-		data : $("#addOrEditForm").serialize(),
+		data : jsonObj,
 		success : function(data) {
 
 			if (data.success == true) {
@@ -100,14 +122,14 @@ function reload() {
 								'<a href="javascript:void(0)" class="work image-popup" style="background-image: url(\''+album.cover +'\')" >'+
 									'<div class="desc" style="width: 100%; height: 100%; position: relative;">'+
 									 	'<div style="position: absolute; top: 2%; left: 2%;">&nbsp; '+
-											'<span class="glyphicon glyphicon-edit" title="编辑" style="display: inline-block; font-size: 15px" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText(\'2\')"></span>&nbsp;&nbsp;'+
-											'<span class="glyphicon glyphicon-upload" title="上传" style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp;'+
+											'<span id="'+album.albumId+'" class="glyphicon glyphicon-edit" title="编辑" style="display: inline-block; font-size: 15px" data-toggle="modal" data-target="#addOrEditAlbum" onclick="changeText(this.id)"></span>&nbsp;&nbsp;'+
+											'<span class="glyphicon glyphicon-upload" title="上传" onclick="changePreviewPosition(\''+album.albumId+'\')" style="display: inline-block; font-size: 15px"></span>&nbsp;&nbsp;'+
 										'</div>'+
 										'<div style="position: absolute; top: 2%; right: 2%;">'+
 											'<span class="glyphicon glyphicon-trash" onclick="alertModel(\''+album.albumId+'\')"  title="删除" style="display: inline-block; font-size: 15px"></span>&nbsp;'+
 										'</div>'+
 										'<h3>'+album.albumName+'</h3>'+
-										'<span>'+album.createDate+'</span>'+
+										'<span>'+album.createDataString+'</span>'+
 									'</div>'+
 								'</a>'+
 							'</div>');
@@ -193,3 +215,36 @@ function alertModel(obj){
 	albumId = obj;
 	$('#deleteAlbumModel').modal();
 }
+var fileUpload = '';
+$(document).on('ready', function() {
+	fileUpload = $("#input-b8").fileinput({
+    	theme: "gly",
+    	uploadUrl:"/common/",
+        rtl: true,
+        language: 'zh',
+        allowedFileExtensions: ["jpg", "png", "gif","jpeg"],
+        maxFileSize:10240,
+        showPreview:true,
+        autoReplace:true
+    });
+});
+var div = '';
+var deletePreviewImgge = '';
+function changePreviewPosition(){
+		if(div ==''){
+			div = $("#removePreviewDiv .file-preview").remove();
+		}
+		$("#previewFileDiv").html(div);
+		// 预览框复制到 另一个div中 x失去了移除预览图片功效 将移除按钮的时间加给x
+		if(deletePreviewImgge == ''){
+			$(".fileinput-remove-button").prop("id","removeImage");
+//			deletePreviewImgge = $(".fileinput-remove").on("click",function(){
+//				 $(".fileinput-remove-button").trigger("click");
+//			})
+		}
+		$('#uploadModel').modal();
+}
+
+
+
+

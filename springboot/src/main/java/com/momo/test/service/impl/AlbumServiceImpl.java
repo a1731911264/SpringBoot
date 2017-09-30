@@ -56,7 +56,15 @@ public class AlbumServiceImpl implements AlbumService {
 		if (StringUtils.isBlank(album.getAlbumName())) {
 			throw new ErrorException("请填写相册名称！");
 		}
-		albumDao.saveAndFlush(album);
+		Album one = albumDao.getOne(album.getAlbumId());
+		one.setAlbumName(album.getAlbumName());
+		one.setAlbumDesc(album.getAlbumDesc());
+		one.setAlbumTheme(album.getAlbumTheme());
+		one.setAlbumClassify(album.getAlbumClassify());
+		one.setSystemAuthority(album.getSystemAuthority());
+		one.setOtherAuthority(album.getOtherAuthority());
+		one.setUpdateDate(new Date());
+		albumDao.saveAndFlush(one);
 	}
 
 	@Override
@@ -92,6 +100,15 @@ public class AlbumServiceImpl implements AlbumService {
 		Album album = albumDao.getOne(albumId);
 		album.setStatus(1);
 		albumDao.save(album);
+	}
+
+	@Override
+	public Album getAlbum(String albumId) throws Exception {
+		if(StringUtils.isBlank(albumId)){
+			throw new ErrorException("请先选择一个相册");
+		}
+		
+		return albumDao.getOne(albumId);
 	}
 
 }

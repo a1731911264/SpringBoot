@@ -98,4 +98,16 @@ public class AlbumController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/getAlbum")
+	public void getAlbum(String albumId,HttpServletResponse response){
+		try {
+			Album album = albumService.getAlbum(albumId);
+			ResponseUtils.sendMessage(response, true,album);
+		} catch(ErrorException e){
+			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
+		} catch (Exception e) {
+			ResponseUtils.sendMessage(response, false, "服务器繁忙,请稍候再试！");
+			e.printStackTrace();
+		}
+	}
 }
