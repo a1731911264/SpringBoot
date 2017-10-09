@@ -3,7 +3,6 @@ package com.momo.test.pojo;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;

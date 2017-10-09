@@ -38,12 +38,12 @@ public class Image implements Serializable{
 	/**
 	 * 照片描述
 	 */
-	@Column(nullable = false, unique = false)
+	@Column(nullable = true, unique = false)
 	private String imageDesc;
 	/**
 	 * 相册id
 	 */
-	@Column(nullable = true, unique = true)
+	@Column(nullable = true, unique = false)
 	private String albumId;
 	/**
 	 *  状态(0 启用 1删除)

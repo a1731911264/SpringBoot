@@ -4,6 +4,7 @@ $('body').scrollspy({
 $(function (){
 	$('#uploadModel').on('hide.bs.modal', function () {
 		$("#removeImage").click();
+		$(".file-drop-zone-title").show();
 	 });
 })
 function changeText(obj) {
@@ -215,22 +216,26 @@ function alertModel(obj){
 	albumId = obj;
 	$('#deleteAlbumModel').modal();
 }
-var fileUpload = '';
+var uploadUrl = '';
 $(document).on('ready', function() {
 	fileUpload = $("#input-b8").fileinput({
     	theme: "gly",
-    	uploadUrl:"/common/",
+    	uploadUrl:uploadUrl,
         rtl: true,
         language: 'zh',
         allowedFileExtensions: ["jpg", "png", "gif","jpeg"],
         maxFileSize:10240,
+        uploadAsync: true,
         showPreview:true,
-        autoReplace:true
+        autoReplace:true,
+        showClose:false,
+        showAjaxErrorDetails:false,
     });
 });
 var div = '';
-var deletePreviewImgge = '';
-function changePreviewPosition(){
+var deletePreviewImgge='';
+function changePreviewPosition(albumId){
+		uploadUrl = "/common/uploadImg?albumId="+albumId;
 		if(div ==''){
 			div = $("#removePreviewDiv .file-preview").remove();
 		}
@@ -244,6 +249,11 @@ function changePreviewPosition(){
 		}
 		$('#uploadModel').modal();
 }
+$(function(){
+	$("#input-b8").change(function(){
+		$(".file-drop-zone-title").hide();
+	});
+})
 
 
 

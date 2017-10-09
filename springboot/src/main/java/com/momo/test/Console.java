@@ -1,8 +1,11 @@
 package com.momo.test;
 
 
+import javax.servlet.MultipartConfigElement;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +28,12 @@ public class Console {
 //     resolver.setMaxUploadSize(10*1024*1024);//上传文件大小 50M 50*1024*1024
 //     return resolver;
 // }   
+	@Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize(1024L * 1024L*10);
+        return factory.createMultipartConfig();
+    }
 	public static void main(String[] args) {
 		SpringApplication.run(Console.class, args);
 	}
