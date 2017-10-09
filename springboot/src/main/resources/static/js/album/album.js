@@ -220,7 +220,7 @@ var uploadUrl = '';
 $(document).on('ready', function() {
 	fileUpload = $("#input-b8").fileinput({
     	theme: "gly",
-    	uploadUrl:uploadUrl,
+    	uploadUrl:"/common/uploadImg",
         rtl: true,
         language: 'zh',
         allowedFileExtensions: ["jpg", "png", "gif","jpeg"],
@@ -230,12 +230,13 @@ $(document).on('ready', function() {
         autoReplace:true,
         showClose:false,
         showAjaxErrorDetails:false,
+        uploadExtraData:{'albumId':uploadUrl}
     });
 });
 var div = '';
 var deletePreviewImgge='';
 function changePreviewPosition(albumId){
-		uploadUrl = "/common/uploadImg?albumId="+albumId;
+		uploadUrl = albumId;
 		if(div ==''){
 			div = $("#removePreviewDiv .file-preview").remove();
 		}
