@@ -71,10 +71,10 @@ public class AlbumServiceImpl implements AlbumService {
 	public List<Album> queryAlbumList(Album album) throws ErrorException {
 		List<Album> lists = null;
 		if (StringUtils.isBlank(album.getAlbumName())) {
-			lists = albumDao.findAlbumByStatus(0);
+			lists = albumDao.queryAlbumListAll(album.getUserId(),0);
 			 
 		}else{
-			 lists = albumDao.queryAlbumList(album.getAlbumName());
+			 lists = albumDao.queryAlbumList(album.getAlbumName(),album.getUserId());
 		}
 		
 		return lists ;

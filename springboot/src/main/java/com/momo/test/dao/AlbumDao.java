@@ -11,8 +11,9 @@ import com.momo.test.pojo.User;
 
 public interface AlbumDao extends JpaRepository<Album, String> {
 
-	@Query("from Album where status = 0 and albumName like %:albumName% order by createDate desc ")
-	public  List<Album> queryAlbumList(@Param("albumName")String albumName);
+	@Query("from Album where status = 0 and albumName like %:albumName% and userId =:userId order by createDate desc ")
+	public  List<Album> queryAlbumList(@Param("albumName")String albumName, @Param("userId")String userId);
 	 
-	public 	List<Album> findAlbumByStatus(int status);
+	@Query("from Album where status =:status and userId =:userId order by createDate desc ")
+	public 	List<Album> queryAlbumListAll(@Param("userId")String userId,@Param("status")int status);
 }
