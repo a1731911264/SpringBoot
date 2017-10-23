@@ -48,18 +48,18 @@
 	<![endif]-->
 
 	</head>
-	<body>
+	<body style="overflow-y: hidden" >
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
 			<div class="dropdown">
-				<div
-					style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;"
-					class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+				<a href="javascript:void(0)" style="cursor: pointer;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+				<div style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;" >
 					<img th:attr="src=${session.user.headUrl}" width="100%"
 						height="100%" style="text-align: center;" id="imageHead" />
 				</div>
+				</a>
 				<ul class="dropdown-menu pull-right" role="menu"
 					aria-labelledby="dropdownMenu1">
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -67,7 +67,7 @@
 						data-target="#editHead"> 上传头像</a></li>
 					<li role="presentation" class="divider"></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="#">修改个人资料</a></li>
+						href="javascript:void(0)" onclick="editPersonalData()">修改个人资料</a></li>
 					<li role="presentation" class="divider"></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="javascript:void(0)" data-toggle="modal"
@@ -78,8 +78,8 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li ><a href="/user/index" style="font-family:楷体;font-size: 18px">主页</a></li>
-					<li><a href="/common/portfolio" style="font-family:楷体;font-size: 18px">相册</a></li>
-					<li class="fh5co-active"><a href="/common/blog" style="font-family:楷体;font-size: 18px">联系人</a></li>
+					<li class="fh5co-active"><a href="/common/portfolio" style="font-family:楷体;font-size: 18px">相册</a></li>
+					<li><a href="/common/contact" style="font-family:楷体;font-size: 18px">联系人</a></li>
 					<li><a href="/common/about" style="font-family:楷体;font-size: 18px">朋友圈</a></li>
 <!-- 					<li><a href="javascript:void(0)" style="font-family:楷体;font-size: 18px"  data-toggle="modal" data-target="#myModal">退出登录</a></li> -->
 				</ul>
@@ -99,159 +99,22 @@
 
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Read Our Blog</h2>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+				<h2  id ="scrollDiv" class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><a href="/common/portfolio">我的相册</a> > <font th:text="${album.albumName}">不负好时光</font> </h2>
+				<div  data-spy="scroll" data-target="#scrollDiv" data-offset="10"
+				class="scrollspy-example"
+				style="margin-top: 0px auto; border: 0; padding: 0;">
+				<div class="row row-bottom-padded-md" style="width: 100%;height: 100%">
+					<div th:each="image:${album.dataList}" class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+						<div class="blog-entry" style="height: 350px;">
+							<a href="javascript:void(0)"  class="blog-img"><img style="display: inline-block; height:190px" th:attr="src=${'/common/downloadImg/'+image.imageUrl}" class="img-responsive" alt="图像加载失败"></a>
 							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-2.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-4.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-5.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-6.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-4.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-2.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="/images/img-4.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								<a href="#" class="lead">Read More <i class="icon-arrow-right3"></i></a>
+								<h5 th:text="${image.originalName}">Inspirational Website</h5>
+								<span style="font-size: 12px;" th:text="${'上传于 '+#calendars.format(image.createTime,'yyyy/MM/dd HH:mm:ss')}" > 2017/10/20 11:53:55</span>
+								<div  style="height:35px; font-size: 12px;overflow: hidden;" th:text="${image.imageDesc}">我最喜欢的照片</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		
-			<div id="get-in-touch">
-				<div class="fh5co-narrow-content">
-					<div class="row">
-						<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
-							<h1 class="fh5co-heading-colored">Get in touch</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<p class="fh5co-lead">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							<p><a href="#" class="btn btn-primary">Learn More</a></p>
-						</div>
-						
-					</div>
 				</div>
 			</div>
 		</div>
@@ -313,6 +176,48 @@
 			</div>
 		</div>
 	</div>
+	<!-- 	修改个人资料的模态窗 -->
+	<div class="modal fade container" id="editPersonalData" tabindex="-1"
+		role="dialog" aria-labelledby="#" aria-hidden="true"
+		style="position: fixed; width: 100%; height: 100%">
+		<div class="modal-dialog" style="width: 470px">
+			<div class="modal-content" style="width: 470px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h5 class="modal-title" id="myModalLabel">编辑资料：</h5>
+				</div>
+				<div class="modal-body" style="width: 100%">
+						<form class="form-horizontal" method="post"
+							id="editPersonalDataForm" action="/user/updataUserInfo"
+							style="width: 100%">
+							<div class="form-group">
+								<label for="showName" class="col-sm-2 control-label">昵称：</label>
+								<div class="col-sm-7">
+									<input type="text" th:value="${session.user.showName}" maxlength="10" class="form-control" id="showName"
+										name="showName" placeholder="请输入一个名字">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="phone" class="col-sm-2 control-label">手机号：</label>
+								<div class="col-sm-7">
+									<input type="text" th:value="${session.user.phone}" maxlength="11" class="form-control" id="phone" name="phone"
+										placeholder="输入一个手机号" />
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						style="font-size: 11px" onclick="updataUserInfo()" data-loading-text="正在保存..." id="updateUserInfoBtn">保存</button>
+					<button type="button" class="btn btn-default btn-sm"
+						data-dismiss="modal" style="font-size: 13px">取消</button>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+	
 	<!-- jQuery -->
 	<script src="/js/jquery-1.9.1.min.js"></script>
 	<!-- jQuery Easing -->
@@ -330,6 +235,79 @@
 <script src="/js/jquery.form.js"></script>
 	<script type="text/javascript" src="/js/head/cropbox.js"></script>
 	<script type="text/javascript" src="/js/head/head.js"></script>
+	<script type="text/javascript">
+
+	$(function(){
+		$(".scrollspy-example").css("height",(window.screen.height-250));
+		$(".scrollspy-example").css("overflow","auto");
+		$(".scrollspy-example").css("position","relative");
+		
+		$(".scrollspy-example").scroll(function(){
+
+			var contentWayPoint = function() {
+				var i = 0;
+				$('.animate-box').waypoint( function( direction ) {
+
+					if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+						
+						i++;
+
+						$(this.element).addClass('item-animate');
+						setTimeout(function(){
+
+							$('body .animate-box.item-animate').each(function(k){
+								var el = $(this);
+								setTimeout( function () {
+									var effect = el.data('animate-effect');
+									if ( effect === 'fadeIn') {
+										el.addClass('fadeIn animated');
+									} else if ( effect === 'fadeInLeft') {
+										el.addClass('fadeInLeft animated');
+									} else if ( effect === 'fadeInRight') {
+										el.addClass('fadeInRight animated');
+									} else {
+										el.addClass('fadeInUp animated');
+									}
+
+									el.removeClass('item-animate');
+								},  k * 200, 'easeInOutExpo' );
+							});
+							
+						}, 100);
+						
+					}
+
+				} , { offset: '85%' } );
+			};
+
+			var mobileMenuOutsideClick = function() {
+
+				$(document).click(function (e) {
+			    var container = $("#fh5co-aside, .js-fh5co-nav-toggle");
+			    if (!container.is(e.target) && container.has(e.target).length === 0) {
+
+			    	if ( $('body').hasClass('offcanvas') ) {
+
+		    			$('body').removeClass('offcanvas');
+		    			$('.js-fh5co-nav-toggle').removeClass('active');
+					
+			    	}
+			    	
+			    }
+				});
+
+			};
+
+
+			$(function(){
+				contentWayPoint();
+			});
+		})
+	})
+	</script>
+
+	
+
 	</body>
 </html>
 

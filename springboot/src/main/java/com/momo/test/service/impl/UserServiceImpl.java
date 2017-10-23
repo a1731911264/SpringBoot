@@ -87,6 +87,11 @@ public class UserServiceImpl implements UserService {
 	public void updateHeadUrl(User user) throws Exception {
 		userDao.saveAndFlush(user);
 	}
+
+	@Override
+	public void updateUserInfo(User user) throws Exception {
+		userDao.saveAndFlush(user);
+	}
 	
 	
 	

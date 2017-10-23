@@ -15,4 +15,6 @@ public interface AlbumService {
 	public void deleteAlbum(String albumId) throws Exception;
 	
 	public Album getAlbum(String albumId) throws Exception;
+	
+	public Album getImageByAlbumId(String albumId) throws Exception;
 }

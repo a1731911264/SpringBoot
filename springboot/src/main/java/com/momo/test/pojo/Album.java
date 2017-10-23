@@ -4,11 +4,13 @@ package com.momo.test.pojo;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -107,6 +109,22 @@ public class Album implements Serializable {
 	/**
 	 * @return the systemAuthority
 	 */
+	@Transient
+	private List<Image> dataList;
+	
+	
+	/**
+	 * @return the dataList
+	 */
+	public List<Image> getDataList() {
+		return dataList;
+	}
+	/**
+	 * @param dataList the dataList to set
+	 */
+	public void setDataList(List<Image> dataList) {
+		this.dataList = dataList;
+	}
 	public int getSystemAuthority() {
 		return systemAuthority;
 	}

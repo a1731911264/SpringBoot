@@ -60,7 +60,18 @@ public class CommonController {
 	}
 
 	@RequestMapping("/blog")
-	public String blog() {
+	public String blog(String albumId,HttpServletRequest request) {
+		try {
+			if(StringUtils.isBlank(albumId)){
+				request.setAttribute("album", null);
+			}else{
+				Album album = albumService.getImageByAlbumId(albumId);
+				request.setAttribute("album", album);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "blog";
 	}
 
@@ -110,18 +121,16 @@ public class CommonController {
 			if (inputStream != null) {
 				if(StringUtils.isBlank(albumId)){
 					System.out.println("相册id为空");
-					ResponseUtils.sendMessage(response, false, "服务器繁忙请稍候重试");
-					return;
+					throw new RuntimeException();
 				}
 				User user = (User) session.getAttribute("user");
 				if (user == null || user.getId() ==null ) {
-					ResponseUtils.sendMessage(response, false, "您还没有登录，请先去登录");
+					throw new RuntimeException();
 				}
 				if (!Files.exists(Paths.get(RESOURCE_PATH+user.getId()))) {
 					Files.createDirectories(Paths.get(RESOURCE_PATH+user.getId()));
 				}
 				String fileName = UUIDUtils.getUUID32();
-				System.out.println(fileName);
 				Files.copy(inputStream, Paths.get(RESOURCE_PATH+user.getId()+"/"+fileName), StandardCopyOption.REPLACE_EXISTING);
 				// 将图片信息存储到数据库中
 				Image image = new Image();
@@ -131,17 +140,16 @@ public class CommonController {
 				image.setImageSize(String.valueOf(file.getSize()));
 				image.setAlbumId(albumId);
 				image.setOriginalName(file.getOriginalFilename());
-				image.setImageUrl(RESOURCE_PATH+user.getId()+"/"+fileName);
+				image.setImageUrl(fileName);
 				imageService.saveImage(image);
 				ResponseUtils.sendMessage(response, true, "图片上传成功");
 				return;
 			} else {
-				ResponseUtils.sendMessage(response, false, "请选择一张图片");
-				return;
+				throw new RuntimeException();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			ResponseUtils.sendMessage(response, false, "服务器繁忙请稍候重试");
+			System.out.println("图片："+file.getOriginalFilename()+"上传失败，原因："+e.getMessage());
+			throw new RuntimeException();
 		}finally{
 			inputStream.close();
 		}

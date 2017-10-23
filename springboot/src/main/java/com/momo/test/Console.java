@@ -1,5 +1,8 @@
 package com.momo.test;
 
+/**
+ * @author MoMo
+ */
 
 import javax.servlet.MultipartConfigElement;
 
@@ -17,7 +20,8 @@ public class Console {
 	@SuppressWarnings("unchecked")
 	@Bean
 	public ServletRegistrationBean<CheckImgServlet> servletRegistrationBean() {
-		return new ServletRegistrationBean<CheckImgServlet>(new CheckImgServlet(), "/code/registerCode");// ServletName默认值为首字母小写，即myServlet
+		// ServletName默认值为首字母小写，即myServlet
+		return new ServletRegistrationBean<CheckImgServlet>(new CheckImgServlet(), "/code/registerCode");
 	}
 //	@Bean(name = "multipartResolver")
 //    public MultipartResolver multipartResolver(){

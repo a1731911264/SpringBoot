@@ -15,4 +15,6 @@ public interface UserService {
 	public void register(User user) throws Exception;
 	
 	public void updateHeadUrl(User user) throws Exception;
+	
+	public void updateUserInfo(User user) throws Exception;
 }

@@ -57,12 +57,13 @@
 			class="border js-fullheight">
 
 			<div class="dropdown">
-				<div
-					style="width: 80px; height: 80px; border-radius: 80px; overflow: hidden; margin: 0 auto;"
+				<a href="javascript:void(0)" style="cursor: pointer;"
 					class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-					<img th:attr="src=${session.user.headUrl}" width="100%"
-						height="100%" style="text-align: center;" id="imageHead" />
-				</div>
+					<div style="width: 80px; height: 80px;border-radius:80px; overflow: hidden; margin: 0 auto;" >
+						<img th:attr="src=${session.user.headUrl}" width="100%"
+							height="100%" style="text-align: center;" id="imageHead" />
+					</div>
+				</a>
 				<ul class="dropdown-menu pull-right" role="menu"
 					aria-labelledby="dropdownMenu1">
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -70,7 +71,7 @@
 						data-target="#editHead"> 上传头像</a></li>
 					<li role="presentation" class="divider"></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="#">修改个人资料</a></li>
+						href="javascript:void(0)" onclick="editPersonalData()">修改个人资料</a></li>
 					<li role="presentation" class="divider"></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="javascript:void(0)" data-toggle="modal"
@@ -84,7 +85,7 @@
 						style="font-family: 楷体; font-size: 18px">主页</a></li>
 					<li><a href="/common/portfolio"
 						style="font-family: 楷体; font-size: 18px">相册</a></li>
-					<li><a href="/common/blog"
+					<li><a href="/common/contact"
 						style="font-family: 楷体; font-size: 18px">联系人</a></li>
 					<li><a href="/common/about"
 						style="font-family: 楷体; font-size: 18px">朋友圈</a></li>
@@ -368,15 +369,16 @@
 
 	<div class="modal fade container" id="editHead" tabindex="-1"
 		role="dialog" aria-labelledby="toEditHead" aria-hidden="true"
-		style="position: fixed; top: 0%;overflow-y: hidden;width: 446px;height:550px;border-radius:6px 6px 2px 6px;">
-		<div class="modal-dialog" style="margin:0 0 0 0">
+		style="position: fixed; top: 0%; overflow-y: hidden; width: 446px; height: 550px; border-radius: 6px 6px 2px 6px;">
+		<div class="modal-dialog" style="margin: 0 0 0 0">
 			<div class="modal-content">
 				<div class="modal-header" style="width: 430px">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
 					<h5 class="modal-title" id="toEditHead">修改头像：</h5>
 				</div>
-				<div class="modal-body" style="height:500px;width:446px;margin:0 0 0 0">
+				<div class="modal-body"
+					style="height: 500px; width: 446px; margin: 0 0 0 0">
 					<div class="imageBox">
 						<div class="thumbBox" id="load"></div>
 						<div class="spinner" style="display: none">请选择一张图片</div>
@@ -401,6 +403,51 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- 	修改个人资料的模态窗 -->
+	<div class="modal fade container" id="editPersonalData" tabindex="-1"
+		role="dialog" aria-labelledby="#" aria-hidden="true"
+		style="position: fixed; width: 100%; height: 100%">
+		<div class="modal-dialog" style="width: 470px">
+			<div class="modal-content" style="width: 470px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h5 class="modal-title" id="myModalLabel">编辑资料：</h5>
+				</div>
+				<div class="modal-body" style="width: 100%">
+						<form class="form-horizontal" method="post"
+							id="editPersonalDataForm" action="/user/updataUserInfo"
+							style="width: 100%">
+							<div class="form-group">
+								<label for="showName" class="col-sm-2 control-label">昵称：</label>
+								<div class="col-sm-7">
+									<input type="text" th:value="${session.user.showName}" maxlength="10" class="form-control" id="showName"
+										name="showName" placeholder="请输入一个名字">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="phone" class="col-sm-2 control-label">手机号：</label>
+								<div class="col-sm-7">
+									<input type="text" th:value="${session.user.phone}" maxlength="11" class="form-control" id="phone" name="phone"
+										placeholder="输入一个手机号" />
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-sm"
+						style="font-size: 11px" onclick="updataUserInfo()" data-loading-text="正在保存..." id="updateUserInfoBtn">保存</button>
+					<button type="button" class="btn btn-default btn-sm"
+						data-dismiss="modal" style="font-size: 13px">取消</button>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+
+
+
 	<!-- jQuery -->
 	<script src="/js/jquery-1.9.1.min.js"></script>
 	<!-- jQuery Easing -->

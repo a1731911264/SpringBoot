@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.alibaba.fastjson.annotation.JSONField;
 @Entity
 public class Image implements Serializable{
 	
@@ -34,6 +36,7 @@ public class Image implements Serializable{
 	 * 上传日期
 	 */
 	@Column(nullable = false, unique = false)
+	@JSONField(format="yy/MM/dd HH:mm:ss")
 	private Date createTime;
 	/**
 	 * 照片描述

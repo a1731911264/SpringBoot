@@ -1,6 +1,7 @@
 package com.momo.test.controller;
 
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONObject;
 import com.momo.test.exception.ErrorException;
 import com.momo.test.pojo.User;
 import com.momo.test.service.UserService;
@@ -143,5 +145,40 @@ public class UserController {
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍候再试");
 		}
 		
+	}
+	@RequestMapping("/updateUserInfo")
+	public void updateUserInfo(HttpSession session,HttpServletResponse response,String showName,String phone){
+		try {
+			User existerUser = (User) session.getAttribute("user");
+			if(existerUser==null){
+				ResponseUtils.sendMessage(response, false, "您还没有登录，请先去登录！");
+				return;
+			}
+			if(StringUtils.isBlank(showName)){
+				ResponseUtils.sendMessage(response, false, "请填写昵称！");
+				return;
+			}
+			if(StringUtils.isBlank(phone)){
+				ResponseUtils.sendMessage(response, false, "请填写手机号码！");
+				return;
+			}
+			existerUser.setShowName(showName);
+			existerUser.setPhone(Long.parseLong(phone));
+			session.setAttribute("user", existerUser);
+			ResponseUtils.sendMessage(response, true, "修改个人信息成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍候再试");
+		}
+		
+	}
+	@RequestMapping("getUserInfo")
+	public void getUserInfo(HttpSession session ,HttpServletResponse response){
+		User user = (User) session.getAttribute("user");
+		if(user == null){
+			ResponseUtils.sendMessage(response, false, "您还没有登录，请先去登录！");
+			return;
+		}
+		ResponseUtils.sendMessage(response, true, JSONObject.toJSONString(user));
 	}
 }
