@@ -38,24 +38,29 @@ function changeText(obj) {
 									"#addOrEditForm input[type='radio'][name='albumTheme'][value='"
 											+ album.albumTheme + "']").prop(
 									"checked", true);
-							$("#addOrEditForm input[type='checkbox']")
-									.each(
-											function(index, element) {
-												$(element).prop("checked",
-														false);
-												var pageValue = $(element)
-														.val();
-												var otherAuthoritys = album.otherAuthority
-														.split(",");
-												for (var i = 0; i < otherAuthoritys.length; i++) {
-													if (pageValue == otherAuthoritys[i]) {
-														$(element)
-																.prop(
-																		"checked",
-																		true);
-													}
+							if(album.otherAuthority =='' || album.otherAuthority == undefined || album.otherAuthority == null ){
+								$("#addOrEditForm input[type='checkbox']").prop("checked",false);
+							}else {
+								$("#addOrEditForm input[type='checkbox']")
+								.each(
+										function(index, element) {
+											$(element).prop("checked",
+													false);
+											var pageValue = $(element)
+													.val();
+											var otherAuthoritys = album.otherAuthority
+													.split(",");
+											for (var i = 0; i < otherAuthoritys.length; i++) {
+												if (pageValue == otherAuthoritys[i]) {
+													$(element)
+															.prop(
+																	"checked",
+																	true);
 												}
-											});
+											}
+										});
+							}
+							
 							checkInputSize($("#albumName")[0]);
 							checkInputSize($("#albumDesc")[0]);
 							$('#addOrEditAlbum').modal('show');

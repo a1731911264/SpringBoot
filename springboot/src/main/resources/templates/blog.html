@@ -46,7 +46,6 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	</head>
 	<body style="overflow-y: hidden" >
 	<div id="fh5co-page">
@@ -74,7 +73,7 @@
 						data-target="#myModal">注销</a></li>
 				</ul>
 			</div>
-		    <br>
+		    <br/>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li ><a href="/user/index" style="font-family:楷体;font-size: 18px">主页</a></li>
@@ -103,11 +102,13 @@
 				<div  data-spy="scroll" data-target="#scrollDiv" data-offset="10"
 				class="scrollspy-example"
 				style="margin-top: 0px auto; border: 0; padding: 0;">
-				<div class="row row-bottom-padded-md" style="width: 100%;height: 100%">
+				<div class="row row-bottom-padded-md" style="width: 100%;height: 100%;border: 0px">
 					<div th:each="image:${album.dataList}" class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry" style="height: 350px;">
-							<a href="javascript:void(0)"  class="blog-img"><img style="display: inline-block; height:190px" th:attr="src=${'/common/downloadImg/'+image.imageUrl}" class="img-responsive" alt="图像加载失败"></a>
-							<div class="desc">
+						<div class="blog-entry" style="height: 360px;text-align: center;">
+							<div style="height: 200px;overflow: hidden;text-align: center;border: 0px">
+								<a href="javascript:void(0)"  class="blog-img"><img style="display: inline-block;width: 100%;height: 200px" th:attr="src=${'/common/downloadImg/'+image.imageUrl}" class="img-responsive" alt="图像加载失败"></a>
+							</div>
+							<div class="desc" style="height: 160px;border: 0px">
 								<h5 th:text="${image.originalName}">Inspirational Website</h5>
 								<span style="font-size: 12px;" th:text="${'上传于 '+#calendars.format(image.createTime,'yyyy/MM/dd HH:mm:ss')}" > 2017/10/20 11:53:55</span>
 								<div  style="height:35px; font-size: 12px;overflow: hidden;" th:text="${image.imageDesc}">我最喜欢的照片</div>
