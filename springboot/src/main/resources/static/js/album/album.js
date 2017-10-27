@@ -177,7 +177,7 @@ function reload() {
 														+ '<h3>'
 														+ album.albumName
 														+ '</h3>'
-														+ '<span>'
+														+ '<span> 创建于 '
 														+ album.createDataString
 														+ '</span>'
 														+ '</div>'
