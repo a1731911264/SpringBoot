@@ -1,6 +1,5 @@
 package com.momo.test.controller;
 
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,8 +10,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.momo.test.exception.ErrorException;
 import com.momo.test.pojo.User;
@@ -28,7 +30,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = { "/toLogin"})
+	@RequestMapping(value = { "/toLogin" })
 	public String toLogin() {
 		return "login";
 	}
@@ -52,6 +54,27 @@ public class UserController {
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");
 			e.printStackTrace();
 		}
+	}
+
+	@RequestMapping("/loginApp")
+	@ResponseBody
+	public String loginApp(User user, String callback, Model model, HttpSession session, HttpServletResponse response) {
+		try {
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			log.info("用户：" + user.getUsername() + "开始登录");
+			User login = userService.login(user);
+			session.setAttribute("user", login);
+			String userMsg = JSON.toJSONString(login);
+			log.info("用户：" + user.getUsername() + "完成登录");
+			return callback + "(" + userMsg + ")";
+		} catch (ErrorException e) {
+			String errorMsg = "{'message':'用户名或密码错误'}";
+			return callback + "("+errorMsg+")";
+		} catch (Exception e) {
+			String errorMsg = "{'message':'用户名或密码错误'}";
+			return callback + "("+errorMsg+")";
+		}
+
 	}
 
 	// 跳转到注册页面
@@ -86,8 +109,21 @@ public class UserController {
 				throw new RuntimeException("t_registerCode 您输入的验证码有误");
 			}
 			userService.register(user);
-			ResponseUtils.sendMessage(response, true,null);
+			ResponseUtils.sendMessage(response, true, null);
 			session.removeAttribute("imgCode");
+			log.info("用户：" + user.getUsername() + "完成注册");
+		} catch (ErrorException e) {
+			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍后再试");
+		}
+	}
+	@RequestMapping("/registerApp")
+	public void registerApp(User user, HttpServletResponse response) {
+		try {
+			userService.register(user);
+			ResponseUtils.sendMessage(response, true, null);
 			log.info("用户：" + user.getUsername() + "完成注册");
 		} catch (ErrorException e) {
 			ResponseUtils.sendMessage(response, false, e.getErrorMessage());
@@ -111,28 +147,30 @@ public class UserController {
 			ResponseUtils.sendMessage(response, true, "验证码正确");
 		}
 	}
+
 	// 退出登录
 	@RequestMapping("/logout")
-	public String logout(HttpSession session){
+	public String logout(HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		if(user ==null){
+		if (user == null) {
 			return "redirect:portals";
 		}
-		log.info("用户："+user.getUsername()+"退出系统！");
+		log.info("用户：" + user.getUsername() + "退出系统！");
 		session.removeAttribute("user");
 		return "redirect:portals";
 	}
+
 	// 头像上传
-	@RequestMapping(value="uploadHead")
-	public void uploadHead(String headUrl,HttpSession session,HttpServletResponse response){
+	@RequestMapping(value = "uploadHead")
+	public void uploadHead(String headUrl, HttpSession session, HttpServletResponse response) {
 		try {
-			if(StringUtils.isBlank(headUrl)){
+			if (StringUtils.isBlank(headUrl)) {
 				ResponseUtils.sendMessage(response, false, "请选择一张图片");
 				return;
 			}
 			System.out.println(headUrl.length());
 			User user = (User) session.getAttribute("user");
-			if(user !=null && StringUtils.isNotBlank(user.getId())){
+			if (user != null && StringUtils.isNotBlank(user.getId())) {
 				// 更新session数据
 				user.setHeadUrl(headUrl);
 				userService.updateHeadUrl(user);
@@ -144,21 +182,22 @@ public class UserController {
 			e.printStackTrace();
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍候再试");
 		}
-		
+
 	}
+
 	@RequestMapping("/updateUserInfo")
-	public void updateUserInfo(HttpSession session,HttpServletResponse response,String showName,String phone){
+	public void updateUserInfo(HttpSession session, HttpServletResponse response, String showName, String phone) {
 		try {
 			User existerUser = (User) session.getAttribute("user");
-			if(existerUser==null){
+			if (existerUser == null) {
 				ResponseUtils.sendMessage(response, false, "您还没有登录，请先去登录！");
 				return;
 			}
-			if(StringUtils.isBlank(showName)){
+			if (StringUtils.isBlank(showName)) {
 				ResponseUtils.sendMessage(response, false, "请填写昵称！");
 				return;
 			}
-			if(StringUtils.isBlank(phone)){
+			if (StringUtils.isBlank(phone)) {
 				ResponseUtils.sendMessage(response, false, "请填写手机号码！");
 				return;
 			}
@@ -170,12 +209,13 @@ public class UserController {
 			e.printStackTrace();
 			ResponseUtils.sendMessage(response, false, "服务器繁忙，请稍候再试");
 		}
-		
+
 	}
+
 	@RequestMapping("getUserInfo")
-	public void getUserInfo(HttpSession session ,HttpServletResponse response){
+	public void getUserInfo(HttpSession session, HttpServletResponse response) {
 		User user = (User) session.getAttribute("user");
-		if(user == null){
+		if (user == null) {
 			ResponseUtils.sendMessage(response, false, "您还没有登录，请先去登录！");
 			return;
 		}
